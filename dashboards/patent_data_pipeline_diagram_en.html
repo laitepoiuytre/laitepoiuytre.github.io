@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Global EV & Autonomous Driving Patent Data Engineering Pipeline</title>
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: #0F172A;
+    color: #0F172A;
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+  }
+  .wrapper {
+    width: 1300px;
+    background: #FFFFFF;
+    padding: 45px 50px;
+    border-radius: 20px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  }
+  .header {
+    text-align: center;
+    margin-bottom: 35px;
+    border-bottom: 2px solid #E2E8F0;
+    padding-bottom: 25px;
+  }
+  .header h1 {
+    font-size: 27px;
+    font-weight: 800;
+    color: #0F172A;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+  }
+  .header p {
+    font-size: 14.5px;
+    color: #64748B;
+    font-weight: 500;
+  }
+  .card {
+    background: #F8FAFC;
+    border: 1.5px solid #CBD5E1;
+    border-radius: 14px;
+    overflow: hidden;
+    margin-bottom: 14px;
+    transition: all 0.2s ease;
+  }
+  .card-header {
+    background: #1E40AF;
+    color: #FFFFFF;
+    padding: 12px 22px;
+    font-size: 16px;
+    font-weight: 700;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .card-badge {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .card-body {
+    padding: 16px 22px;
+  }
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 14px;
+  }
+  .sub-box {
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    padding: 12px 14px;
+    border-radius: 8px;
+  }
+  .sub-title {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: #1E293B;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .sub-desc {
+    font-size: 12.5px;
+    color: #475569;
+    line-height: 1.5;
+  }
+  .metric-highlight {
+    font-weight: 700;
+    color: #1E40AF;
+  }
+  .tag {
+    display: inline-block;
+    background: #EFF6FF;
+    color: #1D4ED8;
+    border: 1px solid #BFDBFE;
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    margin-right: 4px;
+  }
+  .tag-success {
+    background: #ECFDF5;
+    color: #047857;
+    border-color: #A7F3D0;
+  }
+  .tag-alert {
+    background: #FEF2F2;
+    color: #B91C1C;
+    border-color: #FECACA;
+  }
+  .arrow {
+    text-align: center;
+    color: #94A3B8;
+    font-size: 20px;
+    line-height: 1;
+    margin: -4px 0 10px 0;
+  }
+</style>
+</head>
+<body>
+
+<div class="wrapper">
+  <div class="header">
+    <h1>Global Electric Vehicle & Autonomous Driving Patent Engineering Pipeline</h1>
+    <p>Data Collection, Entity Harmonization, Google BERT Screening, Local DeepSeek-14B Full Audit & Hierarchical Classification</p>
+  </div>
+
+  <!-- Stage 1 -->
+  <div class="card">
+    <div class="card-header">
+      <span>Stage 1: Dynamic Derivation of 360 Core IPCs</span>
+      <span class="card-badge">Rule Convergence</span>
+    </div>
+    <div class="card-body grid-3">
+      <div class="sub-box">
+        <div class="sub-title">1. DeepSeek Cold-Start Exploration</div>
+        <div class="sub-desc">Domain ontology based on <span class="metric-highlight">SAE J3016</span> & <span class="metric-highlight">China Roadmap 2.0</span>. DeepSeek reasons initial candidate IPCs across perception, decision, and execution.</div>
+      </div>
+      <div class="sub-box">
+        <div class="sub-title">2. Positive-Case Reverse-Mining</div>
+        <div class="sub-desc">DeepSeek audits candidate samples (<span class="tag">is_autodriving == Yes</span>). Reverse-engineering aggregates high-frequency IPCs to supplement rules.</div>
+      </div>
+      <div class="sub-box">
+        <div class="sub-title">3. 12 Tech Giants Penetration</div>
+        <div class="sub-desc">Auditing full portfolios of <span class="metric-highlight">NVIDIA, Tesla, Waymo, Hesai, Bosch</span>, etc. Discovers proprietary IPCs (OTA updates, serial bus). Converges to <span class="metric-highlight">360 Master IPCs</span>.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="arrow">▼</div>
+
+  <!-- Stage 2 -->
+  <div class="card">
+    <div class="card-header">
+      <span>Stage 2: Cross-Border Extraction & Global De-duplication</span>
+      <span class="card-badge">10,899,098 Records</span>
+    </div>
+    <div class="card-body grid-2">
+      <div class="sub-box">
+        <div class="sub-title">1. Multi-Source Ingestion (190+ Shards)</div>
+        <div class="sub-desc">• <strong>China 360-IPC Corpus</strong>: 3,170,000 records<br>• <strong>Overseas 360-IPC Corpus</strong>: 7,729,098 records (USPTO, EPO, JPO, KIPO, WIPO) across Perception, Execution, Hardware, and AI domains.</div>
+      </div>
+      <div class="sub-box">
+        <div class="sub-title">2. High-Throughput Concurrent Parser</div>
+        <div class="sub-desc"><span class="metric-highlight">extract_and_deduplicate.py</span> (8-Worker ProcessPoolExecutor). Global de-duplication on <span class="tag">lens_id</span> yields <strong>10,899,098 unique patents</strong> clustered into <strong>5,460,674 Patent Families</strong>.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="arrow">▼</div>
+
+  <!-- Stage 3 -->
+  <div class="card">
+    <div class="card-header">
+      <span>Stage 3: HARMI Applicant Harmonization & 148k Multilingual Dictionary</span>
+      <span class="card-badge">94.99% English Purity</span>
+    </div>
+    <div class="card-body grid-3">
+      <div class="sub-box">
+        <div class="sub-title">1. Baseline on Applicants</div>
+        <div class="sub-desc">Strictly discards <em>assignees</em> to eliminate law firms, collateral trusts, and secondary transfer noise. Isolates genuine micro-innovating corporate entities.</div>
+      </div>
+      <div class="sub-box">
+        <div class="sub-title">2. Longest-English Propagation</div>
+        <div class="sub-desc">Within 5.46M families, standard English entity names from US/EP counterparts backfill non-English priority filings. Regex strips timestamps like <em>(2017-03-01)</em>.</div>
+      </div>
+      <div class="sub-box">
+        <div class="sub-title">3. 148k Self-Mined Dictionary</div>
+        <div class="sub-desc">Mined <strong>148,088 bilingual word-pairs</strong> (Huawei, Toyota, Samsung). Normalizes legal forms (CO LTD, INC, GMBH), yielding <strong>10,352,808 (94.99%)</strong> pure-English assignees.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="arrow">▼</div>
+
+  <!-- Stage 4 -->
+  <div class="card">
+    <div class="card-header">
+      <span>Stage 4: Google BERT Validation (100k Samples / 8,000 Test Set) & Candidate Screening</span>
+      <span class="card-badge">~1.85M Candidates</span>
+    </div>
+    <div class="card-body grid-2">
+      <div class="sub-box">
+        <div class="sub-title">1. DeepSeek-Supervised Google BERT Fine-Tuning</div>
+        <div class="sub-desc">Trained on <strong>100,000 balanced samples (50k positive / 50k negative)</strong> using <em>anferico/bert-for-patents</em> (330M parameters, 39,859 domain vocab tokens). Evaluated on an independent <strong>8,000 hold-out test set</strong>.</div>
+      </div>
+      <div class="sub-box">
+        <div class="sub-title">2. Benchmark Evaluation & Screening</div>
+        <div class="sub-desc">• <span class="metric-highlight">ROC-AUC: 0.9519</span> | <span class="metric-highlight">F1: 87.64%</span> | <span class="metric-highlight">Recall: 94.70% (High-recall: 96.40%)</span> | <span class="metric-highlight">Precision: 81.57%</span>.<br>• Combined with family clustering, coarsely filters 10.9M records to <strong>1,850,174 core candidates (~1.85M)</strong>.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="arrow">▼</div>
+
+  <!-- Stage 5 -->
+  <div class="card">
+    <div class="card-header">
+      <span>Stage 5: Local DeepSeek-14B 100% Full-Scale Audit on All 1.85M Candidates</span>
+      <span class="card-badge">Full In-Depth Adjudication</span>
+    </div>
+    <div class="card-body grid-2">
+      <div class="sub-box">
+        <div class="sub-title">1. Local Model Zero-Leakage Architecture</div>
+        <div class="sub-desc">Deployed local private <strong>DeepSeek-14B inference engine</strong>. Performed a <strong>100% complete, record-by-record semantic audit across all 1,850,174 candidate patents</strong> based on Title and Abstract.</div>
+      </div>
+      <div class="sub-box">
+        <div class="sub-title">2. Empirical Adjudication Breakdown</div>
+        <div class="sub-desc">• <span class="tag tag-alert">Classified as "No" (Noise Filtered)</span>: <strong>1,370,419 records (74.07%)</strong>. Excluded consumer cameras, cleaning robots, general image processing.<br>• <span class="tag tag-success">Classified as "Yes" (Confirmed AV)</span>: <strong>479,755 records (25.93%)</strong> $\rightarrow$ <strong>458,921 unique</strong> core patents.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="arrow">▼</div>
+
+  <!-- Stage 6 -->
+  <div class="card">
+    <div class="card-header">
+      <span>Stage 6: Prefix-Hash Routing & Level-2 Technical Category Disambiguation</span>
+      <span class="card-badge">100% Closed Categorization</span>
+    </div>
+    <div class="card-body grid-2">
+      <div class="sub-box">
+        <div class="sub-title">1. Two-Tier Routing Engine</div>
+        <div class="sub-desc">• <strong>Single-Rule Match (55.13%, 253,013 patents)</strong>: Direct O(1) prefix-hash assignment, zero LLM overhead.<br>• <strong>Multi-Category Overlap (44.87%, 205,908 patents)</strong>: Constrained prompt injects 2~4 candidate categories for LLM adjudication.</div>
+      </div>
+      <div class="sub-box">
+        <div class="sub-title">2. Final Master Asset Delivery across 20 Sub-Domains</div>
+        <div class="sub-desc">Sensor Systems (54.72%), Chassis-by-Wire Actuation (10.22%), Interactive Decision (8.71%), Behavioral Decision (5.62%), Trajectory Planning (3.70%), V2X (2.36%), etc. Delivered in high-performance <strong>Parquet / CSV / Excel</strong> master tables.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自动驾驶技术全球扩散桑基图分析 (Top 5 核心国 + RoW)</title>
+    <script src="../assets/js/echarts.min.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "Microsoft YaHei", sans-serif;
+            background: #0b1120;
+            color: #f1f5f9;
+            padding: 24px;
+        }
+        .header {
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #1e293b;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+        .header h1 {
+            font-size: 22px;
+            font-weight: 700;
+            color: #38bdf8;
+            margin-bottom: 6px;
+        }
+        .header p {
+            font-size: 13px;
+            color: #94a3b8;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+        .stat-card {
+            background: #111827;
+            border: 1px solid #1f2937;
+            border-radius: 8px;
+            padding: 16px;
+        }
+        .stat-label { font-size: 12px; color: #9ca3af; margin-bottom: 4px; }
+        .stat-val { font-size: 22px; font-weight: 700; color: #f9fafb; }
+        .badge-list {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+        .badge {
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        .badge-us { background: rgba(59, 130, 246, 0.2); color: #60a5fa; border: 1px solid #3b82f6; }
+        .badge-cn { background: rgba(239, 68, 68, 0.2); color: #f87171; border: 1px solid #ef4444; }
+        .badge-jp { background: rgba(245, 158, 11, 0.2); color: #fbbf24; border: 1px solid #f59e0b; }
+        .badge-de { background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid #10b981; }
+        .badge-kr { background: rgba(139, 92, 246, 0.2); color: #a78bfa; border: 1px solid #8b5cf6; }
+        .badge-row { background: rgba(100, 116, 139, 0.2); color: #94a3b8; border: 1px solid #64748b; }
+        .tabs {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 16px;
+            align-items: center;
+        }
+        .tab-btn {
+            background: #111827;
+            color: #9ca3af;
+            border: 1px solid #1f2937;
+            padding: 8px 18px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 13.5px;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        .tab-btn.active {
+            background: #0284c7;
+            color: #ffffff;
+            border-color: #38bdf8;
+        }
+        .cat-select {
+            background: #111827;
+            color: #f9fafb;
+            border: 1px solid #1f2937;
+            padding: 8px 14px;
+            border-radius: 6px;
+            font-size: 13.5px;
+            outline: none;
+            display: none;
+            cursor: pointer;
+        }
+        .chart-box {
+            background: #111827;
+            border: 1px solid #1f2937;
+            border-radius: 8px;
+            padding: 24px;
+            height: 720px;
+        }
+        #sankey-chart { width: 100%; height: 100%; }
+        .data-table-section {
+            margin-top: 20px;
+            background: #111827;
+            border: 1px solid #1f2937;
+            border-radius: 8px;
+            padding: 20px;
+        }
+        .data-table-section h2 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #38bdf8;
+        }
+        table { width: 100%; border-collapse: collapse; font-size: 13px; }
+        th, td { padding: 10px 14px; text-align: left; border-bottom: 1px solid #1f2937; }
+        th { background: #0b1120; color: #9ca3af; font-weight: 600; }
+        tr:hover td { background: #1f2937; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div>
+            <h1>自动驾驶技术全球扩散桑基图 (Top 5 核心国家 + RoW 世界其他地区)</h1>
+            <p>基于 1000 万全量底表 100% 对齐核心库与 4.67 亿行 Google Citation 全局引用网抽取</p>
+        </div>
+        <div style="font-size: 12px; color: #64748b;">
+            聚焦 Top 5 主权发明国 + RoW (包含 WO/EP/GB/FR/CA 等)
+        </div>
+    </div>
+
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-label">总引用流量 (Total Citations)</div>
+            <div class="stat-val">1,060,152 次</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">核心发明国家 (Top 5)</div>
+            <div class="stat-val">US, CN, JP, DE, KR</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">世界其他地区 (RoW)</div>
+            <div class="stat-val">包含 PCT/欧专局等</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">矩阵对齐维度</div>
+            <div class="stat-val">6 × 6 经典贸易宏观口径</div>
+        </div>
+    </div>
+
+    <div class="badge-list">
+        <span class="badge badge-us">🇺🇸 US (美国)</span>
+        <span class="badge badge-cn">🇨🇳 CN (中国)</span>
+        <span class="badge badge-de">🇩🇪 DE (德国)</span>
+        <span class="badge badge-jp">🇯🇵 JP (日本)</span>
+        <span class="badge badge-kr">🇰🇷 KR (韩国)</span>
+        <span class="badge badge-row">🌐 RoW (其他 / Rest of World)</span>
+    </div>
+
+    <div class="tabs">
+        <button class="tab-btn active" id="btn-global" onclick="switchMode('global')">📊 Sankey 1: 全局 Country to Country 扩散 (Top5 + RoW)</button>
+        <button class="tab-btn" id="btn-category" onclick="switchMode('category')">🔬 Sankey 2: 一级分类内 Country to Country 扩散</button>
+        <select class="cat-select" id="cat-selector" onchange="changeCategory()">
+            <option value="不适用">不适用</option><option value="决策规划">决策规划</option><option value="控制执行">控制执行</option><option value="支撑体系">支撑体系</option><option value="环境感知">环境感知</option>
+        </select>
+    </div>
+
+    <div class="chart-box">
+        <div id="sankey-chart"></div>
+    </div>
+
+    <div class="data-table-section">
+        <h2 id="table-title">全球技术扩散流量排序 (Top Flows)</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>排名</th>
+                    <th>技术源头国 (被引专利所在国)</th>
+                    <th>技术流向国 (施引专利所在国)</th>
+                    <th>引用流量 (Citations)</th>
+                    <th>流量占比</th>
+                    <th>扩散类型</th>
+                </tr>
+            </thead>
+            <tbody id="table-body"></tbody>
+        </table>
+    </div>
+
+    <script>
+        const globalData = {"nodes": [{"name": "US (源)", "itemStyle": {"color": "#3b82f6"}}, {"name": "CN (源)", "itemStyle": {"color": "#ef4444"}}, {"name": "JP (源)", "itemStyle": {"color": "#f59e0b"}}, {"name": "DE (源)", "itemStyle": {"color": "#10b981"}}, {"name": "KR (源)", "itemStyle": {"color": "#8b5cf6"}}, {"name": "RoW (源)", "itemStyle": {"color": "#64748b"}}, {"name": "US (流)", "itemStyle": {"color": "#3b82f6"}}, {"name": "CN (流)", "itemStyle": {"color": "#ef4444"}}, {"name": "JP (流)", "itemStyle": {"color": "#f59e0b"}}, {"name": "DE (流)", "itemStyle": {"color": "#10b981"}}, {"name": "KR (流)", "itemStyle": {"color": "#8b5cf6"}}, {"name": "RoW (流)", "itemStyle": {"color": "#64748b"}}], "links": [{"source": "US (源)", "target": "US (流)", "value": 379392}, {"source": "CN (源)", "target": "CN (流)", "value": 195512}, {"source": "JP (源)", "target": "JP (流)", "value": 85938}, {"source": "JP (源)", "target": "US (流)", "value": 50812}, {"source": "RoW (源)", "target": "US (流)", "value": 36383}, {"source": "RoW (源)", "target": "RoW (流)", "value": 33144}, {"source": "JP (源)", "target": "RoW (流)", "value": 32857}, {"source": "JP (源)", "target": "CN (流)", "value": 31801}, {"source": "RoW (源)", "target": "CN (流)", "value": 27350}, {"source": "DE (源)", "target": "DE (流)", "value": 26148}, {"source": "US (源)", "target": "RoW (流)", "value": 19243}, {"source": "US (源)", "target": "CN (流)", "value": 18214}, {"source": "CN (源)", "target": "RoW (流)", "value": 16911}, {"source": "DE (源)", "target": "RoW (流)", "value": 15509}, {"source": "DE (源)", "target": "US (流)", "value": 13949}, {"source": "KR (源)", "target": "KR (流)", "value": 13303}, {"source": "JP (源)", "target": "KR (流)", "value": 12276}, {"source": "KR (源)", "target": "CN (流)", "value": 8010}, {"source": "CN (源)", "target": "US (流)", "value": 7129}, {"source": "DE (源)", "target": "CN (流)", "value": 6221}, {"source": "KR (源)", "target": "US (流)", "value": 5932}, {"source": "RoW (源)", "target": "JP (流)", "value": 5315}, {"source": "RoW (源)", "target": "DE (流)", "value": 4413}, {"source": "KR (源)", "target": "RoW (流)", "value": 4113}, {"source": "JP (源)", "target": "DE (流)", "value": 3320}, {"source": "US (源)", "target": "DE (流)", "value": 3151}, {"source": "RoW (源)", "target": "KR (流)", "value": 1017}, {"source": "US (源)", "target": "JP (流)", "value": 669}, {"source": "US (源)", "target": "KR (流)", "value": 537}, {"source": "DE (源)", "target": "JP (流)", "value": 487}, {"source": "CN (源)", "target": "JP (流)", "value": 412}, {"source": "CN (源)", "target": "KR (流)", "value": 164}, {"source": "DE (源)", "target": "KR (流)", "value": 153}, {"source": "CN (源)", "target": "DE (流)", "value": 138}, {"source": "KR (源)", "target": "DE (流)", "value": 136}, {"source": "KR (源)", "target": "JP (流)", "value": 93}]};
+        const catData = {"不适用": {"nodes": [{"name": "US (源)", "itemStyle": {"color": "#3b82f6"}}, {"name": "CN (源)", "itemStyle": {"color": "#ef4444"}}, {"name": "JP (源)", "itemStyle": {"color": "#f59e0b"}}, {"name": "DE (源)", "itemStyle": {"color": "#10b981"}}, {"name": "KR (源)", "itemStyle": {"color": "#8b5cf6"}}, {"name": "RoW (源)", "itemStyle": {"color": "#64748b"}}, {"name": "US (流)", "itemStyle": {"color": "#3b82f6"}}, {"name": "CN (流)", "itemStyle": {"color": "#ef4444"}}, {"name": "JP (流)", "itemStyle": {"color": "#f59e0b"}}, {"name": "DE (流)", "itemStyle": {"color": "#10b981"}}, {"name": "KR (流)", "itemStyle": {"color": "#8b5cf6"}}, {"name": "RoW (流)", "itemStyle": {"color": "#64748b"}}], "links": [{"source": "CN (源)", "target": "CN (流)", "value": 309}, {"source": "US (源)", "target": "US (流)", "value": 150}, {"source": "CN (源)", "target": "RoW (流)", "value": 31}, {"source": "DE (源)", "target": "DE (流)", "value": 22}, {"source": "CN (源)", "target": "US (流)", "value": 22}, {"source": "RoW (源)", "target": "CN (流)", "value": 17}, {"source": "DE (源)", "target": "RoW (流)", "value": 15}, {"source": "DE (源)", "target": "US (流)", "value": 15}, {"source": "US (源)", "target": "CN (流)", "value": 12}, {"source": "JP (源)", "target": "JP (流)", "value": 9}, {"source": "US (源)", "target": "RoW (流)", "value": 7}, {"source": "JP (源)", "target": "RoW (流)", "value": 6}, {"source": "RoW (源)", "target": "RoW (流)", "value": 5}, {"source": "KR (源)", "target": "KR (流)", "value": 4}, {"source": "JP (源)", "target": "DE (流)", "value": 3}, {"source": "JP (源)", "target": "CN (流)", "value": 3}, {"source": "JP (源)", "target": "KR (流)", "value": 3}, {"source": "KR (源)", "target": "CN (流)", "value": 3}, {"source": "JP (源)", "target": "US (流)", "value": 2}, {"source": "DE (源)", "target": "CN (流)", "value": 2}, {"source": "RoW (源)", "target": "JP (流)", "value": 1}, {"source": "US (源)", "target": "JP (流)", "value": 1}, {"source": "RoW (源)", "target": "DE (流)", "value": 1}, {"source": "KR (源)", "target": "US (流)", "value": 1}, {"source": "KR (源)", "target": "RoW (流)", "value": 1}, {"source": "RoW (源)", "target": "US (流)", "value": 1}]}, "决策规划": {"nodes": [{"name": "US (源)", "itemStyle": {"color": "#3b82f6"}}, {"name": "CN (源)", "itemStyle": {"color": "#ef4444"}}, {"name": "JP (源)", "itemStyle": {"color": "#f59e0b"}}, {"name": "DE (源)", "itemStyle": {"color": "#10b981"}}, {"name": "KR (源)", "itemStyle": {"color": "#8b5cf6"}}, {"name": "RoW (源)", "itemStyle": {"color": "#64748b"}}, {"name": "US (流)", "itemStyle": {"color": "#3b82f6"}}, {"name": "CN (流)", "itemStyle": {"color": "#ef4444"}}, {"name": "JP (流)", "itemStyle": {"color": "#f59e0b"}}, {"name": "DE (流)", "itemStyle": {"color": "#10b981"}}, {"name": "KR (流)", "itemStyle": {"color": "#8b5cf6"}}, {"name": "RoW (流)", "itemStyle": {"color": "#64748b"}}], "links": [{"source": "CN (源)", "target": "CN (流)", "value": 33135}, {"source": "US (源)", "target": "US (流)", "value": 10660}, {"source": "RoW (源)", "target": "CN (流)", "value": 2208}, {"source": "CN (源)", "target": "RoW (流)", "value": 2120}, {"source": "JP (源)", "target": "JP (流)", "value": 2097}, {"source": "US (源)", "target": "CN (流)", "value": 1565}, {"source": "JP (源)", "target": "CN (流)", "value": 1388}, {"source": "JP (源)", "target": "US (流)", "value": 1293}, {"source": "RoW (源)", "target": "US (流)", "value": 1021}, {"source": "DE (源)", "target": "DE (流)", "value": 995}, {"source": "RoW (源)", "target": "RoW (流)", "value": 989}, {"source": "JP (源)", "target": "RoW (流)", "value": 919}, {"source": "CN (源)", "target": "US (流)", "value": 815}, {"source": "US (源)", "target": "RoW (流)", "value": 656}, {"source": "KR (源)", "target": "CN (流)", "value": 503}, {"source": "KR (源)", "target": "KR (流)", "value": 456}, {"source": "DE (源)", "target": "RoW (流)", "value": 452}, {"source": "JP (源)", "target": "KR (流)", "value": 389}, {"source": "DE (源)", "target": "US (流)", "value": 386}, {"source": "DE (源)", "target": "CN (流)", "value": 276}, {"source": "RoW (源)", "target": "JP (流)", "value": 261}, {"source": "KR (源)", "target": "US (流)", "value": 253}, {"source": "KR (源)", "target": "RoW (流)", "value": 163}, {"source": "RoW (源)", "target": "DE (流)", "value": 91}, {"source": "US (源)", "target": "DE (流)", "value": 88}, {"source": "JP (源)", "target": "DE (流)", "value": 71}, {"source": "RoW (源)", "target": "KR (流)", "value": 52}, {"source": "CN (源)", "target": "JP (流)", "value": 42}, {"source": "US (源)", "target": "JP (流)", "value": 31}, {"source": "CN (源)", "target": "KR (流)", "value": 29}, {"source": "US (源)", "target": "KR (流)", "value": 24}, {"source": "CN (源)", "target": "DE (流)", "value": 16}, {"source": "DE (源)", "target": "JP (流)", "value": 10}, {"source": "KR (源)", "target": "JP (流)", "value": 5}, {"source": "DE (源)", "target": "KR (流)", "value": 4}, {"source": "KR (源)", "target": "DE (流)", "value": 3}]}, "控制执行": {"nodes": [{"name": "US (源)", "itemStyle": {"color": "#3b82f6"}}, {"name": "CN (源)", "itemStyle": {"color": "#ef4444"}}, {"name": "JP (源)", "itemStyle": {"color": "#f59e0b"}}, {"name": "DE (源)", "itemStyle": {"color": "#10b981"}}, {"name": "KR (源)", "itemStyle": {"color": "#8b5cf6"}}, {"name": "RoW (源)", "itemStyle": {"color": "#64748b"}}, {"name": "US (流)", "itemStyle": {"color": "#3b82f6"}}, {"name": "CN (流)", "itemStyle": {"color": "#ef4444"}}, {"name": "JP (流)", "itemStyle": {"color": "#f59e0b"}}, {"name": "DE (流)", "itemStyle": {"color": "#10b981"}}, {"name": "KR (流)", "itemStyle": {"color": "#8b5cf6"}}, {"name": "RoW (流)", "itemStyle": {"color": "#64748b"}}], "links": [{"source": "US (源)", "target": "US (流)", "value": 28063}, {"source": "CN (源)", "target": "CN (流)", "value": 17283}, {"source": "JP (源)", "target": "JP (流)", "value": 13611}, {"source": "JP (源)", "target": "US (流)", "value": 7973}, {"source": "JP (源)", "target": "CN (流)", "value": 6624}, {"source": "DE (源)", "target": "DE (流)", "value": 5102}, {"source": "JP (源)", "target": "RoW (流)", "value": 4784}, {"source": "RoW (源)", "target": "RoW (流)", "value": 4289}, {"source": "RoW (源)", "target": "US (流)", "value": 3332}, {"source": "DE (源)", "target": "RoW (流)", "value": 3257}, {"source": "RoW (源)", "target": "CN (流)", "value": 2887}, {"source": "DE (源)", "target": "US (流)", "value": 2378}, {"source": "US (源)", "target": "RoW (流)", "value": 1711}, {"source": "JP (源)", "target": "KR (流)", "value": 1676}, {"source": "US (源)", "target": "CN (流)", "value": 1512}, {"source": "DE (源)", "target": "CN (流)", "value": 1344}, {"source": "CN (源)", "target": "RoW (流)", "value": 1083}, {"source": "KR (源)", "target": "CN (流)", "value": 994}, {"source": "KR (源)", "target": "KR (流)", "value": 809}, {"source": "RoW (源)", "target": "DE (流)", "value": 727}, {"source": "JP (源)", "target": "DE (流)", "value": 655}, {"source": "RoW (源)", "target": "JP (流)", "value": 529}, {"source": "CN (源)", "target": "US (流)", "value": 505}, {"source": "KR (源)", "target": "US (流)", "value": 484}, {"source": "US (源)", "target": "DE (流)", "value": 249}, {"source": "KR (源)", "target": "RoW (流)", "value": 216}, {"source": "RoW (源)", "target": "KR (流)", "value": 111}, {"source": "DE (源)", "target": "JP (流)", "value": 86}, {"source": "US (源)", "target": "KR (流)", "value": 64}, {"source": "US (源)", "target": "JP (流)", "value": 53}, {"source": "DE (源)", "target": "KR (流)", "value": 43}, {"source": "KR (源)", "target": "DE (流)", "value": 31}, {"source": "CN (源)", "target": "JP (流)", "value": 29}, {"source": "CN (源)", "target": "DE (流)", "value": 25}, {"source": "CN (源)", "target": "KR (流)", "value": 21}, {"source": "KR (源)", "target": "JP (流)", "value": 5}]}, "支撑体系": {"nodes": [{"name": "US (源)", "itemStyle": {"color": "#3b82f6"}}, {"name": "CN (源)", "itemStyle": {"color": "#ef4444"}}, {"name": "JP (源)", "itemStyle": {"color": "#f59e0b"}}, {"name": "DE (源)", "itemStyle": {"color": "#10b981"}}, {"name": "KR (源)", "itemStyle": {"color": "#8b5cf6"}}, {"name": "RoW (源)", "itemStyle": {"color": "#64748b"}}, {"name": "US (流)", "itemStyle": {"color": "#3b82f6"}}, {"name": "CN (流)", "itemStyle": {"color": "#ef4444"}}, {"name": "JP (流)", "itemStyle": {"color": "#f59e0b"}}, {"name": "DE (流)", "itemStyle": {"color": "#10b981"}}, {"name": "KR (流)", "itemStyle": {"color": "#8b5cf6"}}, {"name": "RoW (流)", "itemStyle": {"color": "#64748b"}}], "links": [{"source": "CN (源)", "target": "CN (流)", "value": 16070}, {"source": "US (源)", "target": "US (流)", "value": 11561}, {"source": "CN (源)", "target": "RoW (流)", "value": 2176}, {"source": "JP (源)", "target": "JP (流)", "value": 2006}, {"source": "RoW (源)", "target": "RoW (流)", "value": 1857}, {"source": "RoW (源)", "target": "US (流)", "value": 1707}, {"source": "RoW (源)", "target": "CN (流)", "value": 1429}, {"source": "JP (源)", "target": "US (流)", "value": 1065}, {"source": "US (源)", "target": "CN (流)", "value": 815}, {"source": "JP (源)", "target": "RoW (流)", "value": 789}, {"source": "DE (源)", "target": "DE (流)", "value": 701}, {"source": "JP (源)", "target": "CN (流)", "value": 659}, {"source": "CN (源)", "target": "US (流)", "value": 639}, {"source": "KR (源)", "target": "KR (流)", "value": 616}, {"source": "US (源)", "target": "RoW (流)", "value": 533}, {"source": "KR (源)", "target": "RoW (流)", "value": 378}, {"source": "KR (源)", "target": "CN (流)", "value": 354}, {"source": "DE (源)", "target": "RoW (流)", "value": 353}, {"source": "DE (源)", "target": "US (流)", "value": 308}, {"source": "JP (源)", "target": "KR (流)", "value": 301}, {"source": "KR (源)", "target": "US (流)", "value": 265}, {"source": "RoW (源)", "target": "JP (流)", "value": 234}, {"source": "DE (源)", "target": "CN (流)", "value": 192}, {"source": "RoW (源)", "target": "DE (流)", "value": 111}, {"source": "US (源)", "target": "DE (流)", "value": 75}, {"source": "RoW (源)", "target": "KR (流)", "value": 67}, {"source": "JP (源)", "target": "DE (流)", "value": 56}, {"source": "CN (源)", "target": "JP (流)", "value": 32}, {"source": "CN (源)", "target": "DE (流)", "value": 20}, {"source": "US (源)", "target": "JP (流)", "value": 13}, {"source": "KR (源)", "target": "DE (流)", "value": 12}, {"source": "US (源)", "target": "KR (流)", "value": 12}, {"source": "CN (源)", "target": "KR (流)", "value": 11}, {"source": "KR (源)", "target": "JP (流)", "value": 5}, {"source": "DE (源)", "target": "JP (流)", "value": 4}, {"source": "DE (源)", "target": "KR (流)", "value": 1}]}, "环境感知": {"nodes": [{"name": "US (源)", "itemStyle": {"color": "#3b82f6"}}, {"name": "CN (源)", "itemStyle": {"color": "#ef4444"}}, {"name": "JP (源)", "itemStyle": {"color": "#f59e0b"}}, {"name": "DE (源)", "itemStyle": {"color": "#10b981"}}, {"name": "KR (源)", "itemStyle": {"color": "#8b5cf6"}}, {"name": "RoW (源)", "itemStyle": {"color": "#64748b"}}, {"name": "US (流)", "itemStyle": {"color": "#3b82f6"}}, {"name": "CN (流)", "itemStyle": {"color": "#ef4444"}}, {"name": "JP (流)", "itemStyle": {"color": "#f59e0b"}}, {"name": "DE (流)", "itemStyle": {"color": "#10b981"}}, {"name": "KR (流)", "itemStyle": {"color": "#8b5cf6"}}, {"name": "RoW (流)", "itemStyle": {"color": "#64748b"}}], "links": [{"source": "US (源)", "target": "US (流)", "value": 328958}, {"source": "CN (源)", "target": "CN (流)", "value": 128715}, {"source": "JP (源)", "target": "JP (流)", "value": 68215}, {"source": "JP (源)", "target": "US (流)", "value": 40479}, {"source": "RoW (源)", "target": "US (流)", "value": 30322}, {"source": "JP (源)", "target": "RoW (流)", "value": 26359}, {"source": "RoW (源)", "target": "RoW (流)", "value": 26004}, {"source": "JP (源)", "target": "CN (流)", "value": 23127}, {"source": "RoW (源)", "target": "CN (流)", "value": 20809}, {"source": "DE (源)", "target": "DE (流)", "value": 19328}, {"source": "US (源)", "target": "RoW (流)", "value": 16336}, {"source": "US (源)", "target": "CN (流)", "value": 14310}, {"source": "CN (源)", "target": "RoW (流)", "value": 11501}, {"source": "DE (源)", "target": "RoW (流)", "value": 11432}, {"source": "KR (源)", "target": "KR (流)", "value": 11418}, {"source": "DE (源)", "target": "US (流)", "value": 10862}, {"source": "JP (源)", "target": "KR (流)", "value": 9907}, {"source": "KR (源)", "target": "CN (流)", "value": 6156}, {"source": "CN (源)", "target": "US (流)", "value": 5148}, {"source": "KR (源)", "target": "US (流)", "value": 4929}, {"source": "DE (源)", "target": "CN (流)", "value": 4407}, {"source": "RoW (源)", "target": "JP (流)", "value": 4290}, {"source": "RoW (源)", "target": "DE (流)", "value": 3483}, {"source": "KR (源)", "target": "RoW (流)", "value": 3355}, {"source": "US (源)", "target": "DE (流)", "value": 2739}, {"source": "JP (源)", "target": "DE (流)", "value": 2535}, {"source": "RoW (源)", "target": "KR (流)", "value": 787}, {"source": "US (源)", "target": "JP (流)", "value": 571}, {"source": "US (源)", "target": "KR (流)", "value": 437}, {"source": "DE (源)", "target": "JP (流)", "value": 387}, {"source": "CN (源)", "target": "JP (流)", "value": 309}, {"source": "DE (源)", "target": "KR (流)", "value": 105}, {"source": "CN (源)", "target": "KR (流)", "value": 103}, {"source": "KR (源)", "target": "DE (流)", "value": 90}, {"source": "KR (源)", "target": "JP (流)", "value": 78}, {"source": "CN (源)", "target": "DE (流)", "value": 77}]}};
+        const globalTable = [{"source_country": "US", "target_country": "US", "flow_count": 379392}, {"source_country": "CN", "target_country": "CN", "flow_count": 195512}, {"source_country": "JP", "target_country": "JP", "flow_count": 85938}, {"source_country": "JP", "target_country": "US", "flow_count": 50812}, {"source_country": "RoW", "target_country": "US", "flow_count": 36383}, {"source_country": "RoW", "target_country": "RoW", "flow_count": 33144}, {"source_country": "JP", "target_country": "RoW", "flow_count": 32857}, {"source_country": "JP", "target_country": "CN", "flow_count": 31801}, {"source_country": "RoW", "target_country": "CN", "flow_count": 27350}, {"source_country": "DE", "target_country": "DE", "flow_count": 26148}, {"source_country": "US", "target_country": "RoW", "flow_count": 19243}, {"source_country": "US", "target_country": "CN", "flow_count": 18214}, {"source_country": "CN", "target_country": "RoW", "flow_count": 16911}, {"source_country": "DE", "target_country": "RoW", "flow_count": 15509}, {"source_country": "DE", "target_country": "US", "flow_count": 13949}, {"source_country": "KR", "target_country": "KR", "flow_count": 13303}, {"source_country": "JP", "target_country": "KR", "flow_count": 12276}, {"source_country": "KR", "target_country": "CN", "flow_count": 8010}, {"source_country": "CN", "target_country": "US", "flow_count": 7129}, {"source_country": "DE", "target_country": "CN", "flow_count": 6221}, {"source_country": "KR", "target_country": "US", "flow_count": 5932}, {"source_country": "RoW", "target_country": "JP", "flow_count": 5315}, {"source_country": "RoW", "target_country": "DE", "flow_count": 4413}, {"source_country": "KR", "target_country": "RoW", "flow_count": 4113}, {"source_country": "JP", "target_country": "DE", "flow_count": 3320}, {"source_country": "US", "target_country": "DE", "flow_count": 3151}, {"source_country": "RoW", "target_country": "KR", "flow_count": 1017}, {"source_country": "US", "target_country": "JP", "flow_count": 669}, {"source_country": "US", "target_country": "KR", "flow_count": 537}, {"source_country": "DE", "target_country": "JP", "flow_count": 487}, {"source_country": "CN", "target_country": "JP", "flow_count": 412}, {"source_country": "CN", "target_country": "KR", "flow_count": 164}, {"source_country": "DE", "target_country": "KR", "flow_count": 153}, {"source_country": "CN", "target_country": "DE", "flow_count": 138}, {"source_country": "KR", "target_country": "DE", "flow_count": 136}, {"source_country": "KR", "target_country": "JP", "flow_count": 93}];
+        const catTable = [{"category": "不适用", "source_country": "CN", "target_country": "CN", "flow_count": 309}, {"category": "不适用", "source_country": "US", "target_country": "US", "flow_count": 150}, {"category": "不适用", "source_country": "CN", "target_country": "RoW", "flow_count": 31}, {"category": "不适用", "source_country": "DE", "target_country": "DE", "flow_count": 22}, {"category": "不适用", "source_country": "CN", "target_country": "US", "flow_count": 22}, {"category": "不适用", "source_country": "RoW", "target_country": "CN", "flow_count": 17}, {"category": "不适用", "source_country": "DE", "target_country": "RoW", "flow_count": 15}, {"category": "不适用", "source_country": "DE", "target_country": "US", "flow_count": 15}, {"category": "不适用", "source_country": "US", "target_country": "CN", "flow_count": 12}, {"category": "不适用", "source_country": "JP", "target_country": "JP", "flow_count": 9}, {"category": "不适用", "source_country": "US", "target_country": "RoW", "flow_count": 7}, {"category": "不适用", "source_country": "JP", "target_country": "RoW", "flow_count": 6}, {"category": "不适用", "source_country": "RoW", "target_country": "RoW", "flow_count": 5}, {"category": "不适用", "source_country": "KR", "target_country": "KR", "flow_count": 4}, {"category": "不适用", "source_country": "JP", "target_country": "DE", "flow_count": 3}, {"category": "不适用", "source_country": "JP", "target_country": "CN", "flow_count": 3}, {"category": "不适用", "source_country": "JP", "target_country": "KR", "flow_count": 3}, {"category": "不适用", "source_country": "KR", "target_country": "CN", "flow_count": 3}, {"category": "不适用", "source_country": "JP", "target_country": "US", "flow_count": 2}, {"category": "不适用", "source_country": "DE", "target_country": "CN", "flow_count": 2}, {"category": "不适用", "source_country": "RoW", "target_country": "JP", "flow_count": 1}, {"category": "不适用", "source_country": "US", "target_country": "JP", "flow_count": 1}, {"category": "不适用", "source_country": "RoW", "target_country": "DE", "flow_count": 1}, {"category": "不适用", "source_country": "KR", "target_country": "US", "flow_count": 1}, {"category": "不适用", "source_country": "KR", "target_country": "RoW", "flow_count": 1}, {"category": "不适用", "source_country": "RoW", "target_country": "US", "flow_count": 1}, {"category": "决策规划", "source_country": "CN", "target_country": "CN", "flow_count": 33135}, {"category": "决策规划", "source_country": "US", "target_country": "US", "flow_count": 10660}, {"category": "决策规划", "source_country": "RoW", "target_country": "CN", "flow_count": 2208}, {"category": "决策规划", "source_country": "CN", "target_country": "RoW", "flow_count": 2120}, {"category": "决策规划", "source_country": "JP", "target_country": "JP", "flow_count": 2097}, {"category": "决策规划", "source_country": "US", "target_country": "CN", "flow_count": 1565}, {"category": "决策规划", "source_country": "JP", "target_country": "CN", "flow_count": 1388}, {"category": "决策规划", "source_country": "JP", "target_country": "US", "flow_count": 1293}, {"category": "决策规划", "source_country": "RoW", "target_country": "US", "flow_count": 1021}, {"category": "决策规划", "source_country": "DE", "target_country": "DE", "flow_count": 995}, {"category": "决策规划", "source_country": "RoW", "target_country": "RoW", "flow_count": 989}, {"category": "决策规划", "source_country": "JP", "target_country": "RoW", "flow_count": 919}, {"category": "决策规划", "source_country": "CN", "target_country": "US", "flow_count": 815}, {"category": "决策规划", "source_country": "US", "target_country": "RoW", "flow_count": 656}, {"category": "决策规划", "source_country": "KR", "target_country": "CN", "flow_count": 503}, {"category": "决策规划", "source_country": "KR", "target_country": "KR", "flow_count": 456}, {"category": "决策规划", "source_country": "DE", "target_country": "RoW", "flow_count": 452}, {"category": "决策规划", "source_country": "JP", "target_country": "KR", "flow_count": 389}, {"category": "决策规划", "source_country": "DE", "target_country": "US", "flow_count": 386}, {"category": "决策规划", "source_country": "DE", "target_country": "CN", "flow_count": 276}, {"category": "决策规划", "source_country": "RoW", "target_country": "JP", "flow_count": 261}, {"category": "决策规划", "source_country": "KR", "target_country": "US", "flow_count": 253}, {"category": "决策规划", "source_country": "KR", "target_country": "RoW", "flow_count": 163}, {"category": "决策规划", "source_country": "RoW", "target_country": "DE", "flow_count": 91}, {"category": "决策规划", "source_country": "US", "target_country": "DE", "flow_count": 88}, {"category": "决策规划", "source_country": "JP", "target_country": "DE", "flow_count": 71}, {"category": "决策规划", "source_country": "RoW", "target_country": "KR", "flow_count": 52}, {"category": "决策规划", "source_country": "CN", "target_country": "JP", "flow_count": 42}, {"category": "决策规划", "source_country": "US", "target_country": "JP", "flow_count": 31}, {"category": "决策规划", "source_country": "CN", "target_country": "KR", "flow_count": 29}, {"category": "决策规划", "source_country": "US", "target_country": "KR", "flow_count": 24}, {"category": "决策规划", "source_country": "CN", "target_country": "DE", "flow_count": 16}, {"category": "决策规划", "source_country": "DE", "target_country": "JP", "flow_count": 10}, {"category": "决策规划", "source_country": "KR", "target_country": "JP", "flow_count": 5}, {"category": "决策规划", "source_country": "DE", "target_country": "KR", "flow_count": 4}, {"category": "决策规划", "source_country": "KR", "target_country": "DE", "flow_count": 3}, {"category": "控制执行", "source_country": "US", "target_country": "US", "flow_count": 28063}, {"category": "控制执行", "source_country": "CN", "target_country": "CN", "flow_count": 17283}, {"category": "控制执行", "source_country": "JP", "target_country": "JP", "flow_count": 13611}, {"category": "控制执行", "source_country": "JP", "target_country": "US", "flow_count": 7973}, {"category": "控制执行", "source_country": "JP", "target_country": "CN", "flow_count": 6624}, {"category": "控制执行", "source_country": "DE", "target_country": "DE", "flow_count": 5102}, {"category": "控制执行", "source_country": "JP", "target_country": "RoW", "flow_count": 4784}, {"category": "控制执行", "source_country": "RoW", "target_country": "RoW", "flow_count": 4289}, {"category": "控制执行", "source_country": "RoW", "target_country": "US", "flow_count": 3332}, {"category": "控制执行", "source_country": "DE", "target_country": "RoW", "flow_count": 3257}, {"category": "控制执行", "source_country": "RoW", "target_country": "CN", "flow_count": 2887}, {"category": "控制执行", "source_country": "DE", "target_country": "US", "flow_count": 2378}, {"category": "控制执行", "source_country": "US", "target_country": "RoW", "flow_count": 1711}, {"category": "控制执行", "source_country": "JP", "target_country": "KR", "flow_count": 1676}, {"category": "控制执行", "source_country": "US", "target_country": "CN", "flow_count": 1512}, {"category": "控制执行", "source_country": "DE", "target_country": "CN", "flow_count": 1344}, {"category": "控制执行", "source_country": "CN", "target_country": "RoW", "flow_count": 1083}, {"category": "控制执行", "source_country": "KR", "target_country": "CN", "flow_count": 994}, {"category": "控制执行", "source_country": "KR", "target_country": "KR", "flow_count": 809}, {"category": "控制执行", "source_country": "RoW", "target_country": "DE", "flow_count": 727}, {"category": "控制执行", "source_country": "JP", "target_country": "DE", "flow_count": 655}, {"category": "控制执行", "source_country": "RoW", "target_country": "JP", "flow_count": 529}, {"category": "控制执行", "source_country": "CN", "target_country": "US", "flow_count": 505}, {"category": "控制执行", "source_country": "KR", "target_country": "US", "flow_count": 484}, {"category": "控制执行", "source_country": "US", "target_country": "DE", "flow_count": 249}, {"category": "控制执行", "source_country": "KR", "target_country": "RoW", "flow_count": 216}, {"category": "控制执行", "source_country": "RoW", "target_country": "KR", "flow_count": 111}, {"category": "控制执行", "source_country": "DE", "target_country": "JP", "flow_count": 86}, {"category": "控制执行", "source_country": "US", "target_country": "KR", "flow_count": 64}, {"category": "控制执行", "source_country": "US", "target_country": "JP", "flow_count": 53}, {"category": "控制执行", "source_country": "DE", "target_country": "KR", "flow_count": 43}, {"category": "控制执行", "source_country": "KR", "target_country": "DE", "flow_count": 31}, {"category": "控制执行", "source_country": "CN", "target_country": "JP", "flow_count": 29}, {"category": "控制执行", "source_country": "CN", "target_country": "DE", "flow_count": 25}, {"category": "控制执行", "source_country": "CN", "target_country": "KR", "flow_count": 21}, {"category": "控制执行", "source_country": "KR", "target_country": "JP", "flow_count": 5}, {"category": "支撑体系", "source_country": "CN", "target_country": "CN", "flow_count": 16070}, {"category": "支撑体系", "source_country": "US", "target_country": "US", "flow_count": 11561}, {"category": "支撑体系", "source_country": "CN", "target_country": "RoW", "flow_count": 2176}, {"category": "支撑体系", "source_country": "JP", "target_country": "JP", "flow_count": 2006}, {"category": "支撑体系", "source_country": "RoW", "target_country": "RoW", "flow_count": 1857}, {"category": "支撑体系", "source_country": "RoW", "target_country": "US", "flow_count": 1707}, {"category": "支撑体系", "source_country": "RoW", "target_country": "CN", "flow_count": 1429}, {"category": "支撑体系", "source_country": "JP", "target_country": "US", "flow_count": 1065}, {"category": "支撑体系", "source_country": "US", "target_country": "CN", "flow_count": 815}, {"category": "支撑体系", "source_country": "JP", "target_country": "RoW", "flow_count": 789}, {"category": "支撑体系", "source_country": "DE", "target_country": "DE", "flow_count": 701}, {"category": "支撑体系", "source_country": "JP", "target_country": "CN", "flow_count": 659}, {"category": "支撑体系", "source_country": "CN", "target_country": "US", "flow_count": 639}, {"category": "支撑体系", "source_country": "KR", "target_country": "KR", "flow_count": 616}, {"category": "支撑体系", "source_country": "US", "target_country": "RoW", "flow_count": 533}, {"category": "支撑体系", "source_country": "KR", "target_country": "RoW", "flow_count": 378}, {"category": "支撑体系", "source_country": "KR", "target_country": "CN", "flow_count": 354}, {"category": "支撑体系", "source_country": "DE", "target_country": "RoW", "flow_count": 353}, {"category": "支撑体系", "source_country": "DE", "target_country": "US", "flow_count": 308}, {"category": "支撑体系", "source_country": "JP", "target_country": "KR", "flow_count": 301}, {"category": "支撑体系", "source_country": "KR", "target_country": "US", "flow_count": 265}, {"category": "支撑体系", "source_country": "RoW", "target_country": "JP", "flow_count": 234}, {"category": "支撑体系", "source_country": "DE", "target_country": "CN", "flow_count": 192}, {"category": "支撑体系", "source_country": "RoW", "target_country": "DE", "flow_count": 111}, {"category": "支撑体系", "source_country": "US", "target_country": "DE", "flow_count": 75}, {"category": "支撑体系", "source_country": "RoW", "target_country": "KR", "flow_count": 67}, {"category": "支撑体系", "source_country": "JP", "target_country": "DE", "flow_count": 56}, {"category": "支撑体系", "source_country": "CN", "target_country": "JP", "flow_count": 32}, {"category": "支撑体系", "source_country": "CN", "target_country": "DE", "flow_count": 20}, {"category": "支撑体系", "source_country": "US", "target_country": "JP", "flow_count": 13}, {"category": "支撑体系", "source_country": "KR", "target_country": "DE", "flow_count": 12}, {"category": "支撑体系", "source_country": "US", "target_country": "KR", "flow_count": 12}, {"category": "支撑体系", "source_country": "CN", "target_country": "KR", "flow_count": 11}, {"category": "支撑体系", "source_country": "KR", "target_country": "JP", "flow_count": 5}, {"category": "支撑体系", "source_country": "DE", "target_country": "JP", "flow_count": 4}, {"category": "支撑体系", "source_country": "DE", "target_country": "KR", "flow_count": 1}, {"category": "环境感知", "source_country": "US", "target_country": "US", "flow_count": 328958}, {"category": "环境感知", "source_country": "CN", "target_country": "CN", "flow_count": 128715}, {"category": "环境感知", "source_country": "JP", "target_country": "JP", "flow_count": 68215}, {"category": "环境感知", "source_country": "JP", "target_country": "US", "flow_count": 40479}, {"category": "环境感知", "source_country": "RoW", "target_country": "US", "flow_count": 30322}, {"category": "环境感知", "source_country": "JP", "target_country": "RoW", "flow_count": 26359}, {"category": "环境感知", "source_country": "RoW", "target_country": "RoW", "flow_count": 26004}, {"category": "环境感知", "source_country": "JP", "target_country": "CN", "flow_count": 23127}, {"category": "环境感知", "source_country": "RoW", "target_country": "CN", "flow_count": 20809}, {"category": "环境感知", "source_country": "DE", "target_country": "DE", "flow_count": 19328}, {"category": "环境感知", "source_country": "US", "target_country": "RoW", "flow_count": 16336}, {"category": "环境感知", "source_country": "US", "target_country": "CN", "flow_count": 14310}, {"category": "环境感知", "source_country": "CN", "target_country": "RoW", "flow_count": 11501}, {"category": "环境感知", "source_country": "DE", "target_country": "RoW", "flow_count": 11432}, {"category": "环境感知", "source_country": "KR", "target_country": "KR", "flow_count": 11418}, {"category": "环境感知", "source_country": "DE", "target_country": "US", "flow_count": 10862}, {"category": "环境感知", "source_country": "JP", "target_country": "KR", "flow_count": 9907}, {"category": "环境感知", "source_country": "KR", "target_country": "CN", "flow_count": 6156}, {"category": "环境感知", "source_country": "CN", "target_country": "US", "flow_count": 5148}, {"category": "环境感知", "source_country": "KR", "target_country": "US", "flow_count": 4929}, {"category": "环境感知", "source_country": "DE", "target_country": "CN", "flow_count": 4407}, {"category": "环境感知", "source_country": "RoW", "target_country": "JP", "flow_count": 4290}, {"category": "环境感知", "source_country": "RoW", "target_country": "DE", "flow_count": 3483}, {"category": "环境感知", "source_country": "KR", "target_country": "RoW", "flow_count": 3355}, {"category": "环境感知", "source_country": "US", "target_country": "DE", "flow_count": 2739}, {"category": "环境感知", "source_country": "JP", "target_country": "DE", "flow_count": 2535}, {"category": "环境感知", "source_country": "RoW", "target_country": "KR", "flow_count": 787}, {"category": "环境感知", "source_country": "US", "target_country": "JP", "flow_count": 571}, {"category": "环境感知", "source_country": "US", "target_country": "KR", "flow_count": 437}, {"category": "环境感知", "source_country": "DE", "target_country": "JP", "flow_count": 387}, {"category": "环境感知", "source_country": "CN", "target_country": "JP", "flow_count": 309}, {"category": "环境感知", "source_country": "DE", "target_country": "KR", "flow_count": 105}, {"category": "环境感知", "source_country": "CN", "target_country": "KR", "flow_count": 103}, {"category": "环境感知", "source_country": "KR", "target_country": "DE", "flow_count": 90}, {"category": "环境感知", "source_country": "KR", "target_country": "JP", "flow_count": 78}, {"category": "环境感知", "source_country": "CN", "target_country": "DE", "flow_count": 77}];
+        const totalCit = 1060152;
+
+        let currentMode = 'global';
+        let chart = echarts.init(document.getElementById('sankey-chart'));
+
+        function renderChart(data, title) {
+            const option = {
+                title: {
+                    text: title,
+                    textStyle: { color: '#f9fafb', fontSize: 16, fontWeight: 600 },
+                    top: 10,
+                    left: 10
+                },
+                tooltip: {
+                    trigger: 'item',
+                    triggerOn: 'mousemove',
+                    formatter: function(params) {
+                        if (params.dataType === 'edge') {
+                            const pct = ((params.data.value / totalCit) * 100).toFixed(2);
+                            return `<b>${params.data.source} ➔ ${params.data.target}</b><br/>引用流动量: <b>${params.data.value.toLocaleString()}</b> 次<br/>占全网比例: <b>${pct}%</b>`;
+                        } else {
+                            return `<b>${params.name}</b>`;
+                        }
+                    }
+                },
+                series: [
+                    {
+                        type: 'sankey',
+                        layout: 'none',
+                        emphasis: { focus: 'adjacency' },
+                        data: data.nodes,
+                        links: data.links,
+                        orient: 'horizontal',
+                        nodeWidth: 26,
+                        nodeGap: 18,
+                        nodeAlign: 'justify',
+                        draggable: true,
+                        itemStyle: { borderWidth: 0, borderRadius: 4 },
+                        lineStyle: { color: 'gradient', curveness: 0.5, opacity: 0.45 },
+                        label: { color: '#f3f4f6', fontSize: 13, fontWeight: 600, padding: [0, 5] }
+                    }
+                ]
+            };
+            chart.setOption(option, true);
+        }
+
+        function updateTable(tableRows) {
+            const tbody = document.getElementById('table-body');
+            tbody.innerHTML = '';
+            tableRows.slice(0, 15).forEach((r, idx) => {
+                const isInternal = r.source_country === r.target_country;
+                const badge = isInternal 
+                    ? '<span style="color:#60a5fa;background:#1e3a8a;padding:2px 8px;border-radius:4px;font-size:11px;">国内累积自引</span>' 
+                    : '<span style="color:#34d399;background:#064e3b;padding:2px 8px;border-radius:4px;font-size:11px;">跨国技术外溢</span>';
+                const pct = ((r.flow_count / totalCit) * 100).toFixed(2);
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${idx + 1}</td>
+                    <td><b>${r.source_country}</b></td>
+                    <td><b>${r.target_country}</b></td>
+                    <td><b>${r.flow_count.toLocaleString()}</b></td>
+                    <td>${pct}%</td>
+                    <td>${badge}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function switchMode(mode) {
+            currentMode = mode;
+            const btnGlobal = document.getElementById('btn-global');
+            const btnCat = document.getElementById('btn-category');
+            const catSelector = document.getElementById('cat-selector');
+
+            if (mode === 'global') {
+                btnGlobal.classList.add('active');
+                btnCat.classList.remove('active');
+                catSelector.style.display = 'none';
+                document.getElementById('table-title').innerText = '全球技术扩散流量排序 (Top 5 + RoW)';
+                renderChart(globalData, 'Sankey 1: 全局 Country to Country 技术扩散网络 (Top 5 + RoW)');
+                updateTable(globalTable);
+            } else {
+                btnGlobal.classList.remove('active');
+                btnCat.classList.add('active');
+                catSelector.style.display = 'inline-block';
+                changeCategory();
+            }
+        }
+
+        function changeCategory() {
+            const selectedCat = document.getElementById('cat-selector').value;
+            const data = catData[selectedCat] || { nodes: [], links: [] };
+            document.getElementById('table-title').innerText = `【${selectedCat}】领域内部技术扩散流量排序 (Top 5 + RoW)`;
+            renderChart(data, `Sankey 2: 【${selectedCat}】一级分类内 Country to Country 扩散网络`);
+            const subTable = catTable.filter(x => x.category === selectedCat);
+            updateTable(subTable);
+        }
+
+        renderChart(globalData, 'Sankey 1: 全局 Country to Country 技术扩散网络 (Top 5 + RoW)');
+        updateTable(globalTable);
+        window.addEventListener('resize', () => chart.resize());
+    </script>
+</body>
+</html>

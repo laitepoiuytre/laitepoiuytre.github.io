@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeepSeek 49,246件 确证正样本 - 全维度 (12大主题图表) 可视化大屏</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --border-color: #334155;
+            --primary-color: #38bdf8;
+            --success-color: #4ade80;
+            --warning-color: #fb923c;
+            --purple-color: #c084fc;
+            --text-color: #f8fafc;
+            --muted-color: #94a3b8;
+        }
+
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, "Microsoft YaHei", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 30px;
+            box-sizing: border-box;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 35px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 20px;
+        }
+
+        .header h1 {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin: 0 0 10px 0;
+            letter-spacing: 0.5px;
+        }
+
+        .header p {
+            color: var(--muted-color);
+            font-size: 1.1rem;
+            margin: 0;
+        }
+
+        .stats-banner {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .stat-title {
+            color: var(--muted-color);
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(580px, 1fr));
+            gap: 30px;
+        }
+
+        .chart-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .chart-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary-color);
+        }
+
+        .chart-header {
+            padding: 16px 20px;
+            background: rgba(15, 23, 42, 0.6);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .chart-title {
+            font-size: 1.15rem;
+            font-weight: bold;
+            color: var(--text-color);
+        }
+
+        .chart-body {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .chart-img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .folder-box {
+            margin-top: 50px;
+            background: var(--card-bg);
+            border: 1px dashed var(--primary-color);
+            border-radius: 12px;
+            padding: 25px;
+            color: var(--text-color);
+        }
+
+        .folder-box h3 {
+            margin-top: 0;
+            color: var(--success-color);
+        }
+
+        .code-snippet {
+            background: #090d16;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Consolas', monospace;
+            color: #38bdf8;
+            font-size: 0.95rem;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>🚗 DeepSeek 49,246件 确证正样本 - 全维度 (12大主题图表) 可视化 Dashboard</h1>
+        <p>EV Patent Data Research Group | DeepSeek Confirmed AD Patent Multi-Dimensional Analytics Dashboard</p>
+    </div>
+
+    <div class="stats-banner">
+        <div class="stat-card">
+            <div class="stat-title">DeepSeek 确证正样本总数</div>
+            <div class="stat-value" style="color: var(--primary-color);">49,246 件</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-title">整车制造厂 (OEM) 专利占比</div>
+            <div class="stat-value" style="color: var(--success-color);">41.5% (14,860件)</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-title">硅谷-加州集群专利占比</div>
+            <div class="stat-value" style="color: var(--warning-color);">27.4% (第一科技集群)</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-title">2024年 纯软件算法专利占比</div>
+            <div class="stat-value" style="color: var(--purple-color);">29.83% (演进趋势)</div>
+        </div>
+    </div>
+
+    <div class="charts-grid">
+        <div class="chart-card">
+            <div class="chart-header">
+                <span class="chart-title">图 1: 全球专利权人 (Assignee Organization) Top 15 巨头排名</span>
+            </div>
+            <div class="chart-body">
+                <img class="chart-img" src="charts/chart1_top15_assignees.png" alt="图 1">
+            </div>
+        </div>
+
+        <div class="chart-card">
+            <div class="chart-header">
+                <span class="chart-title">图 2: 25年 (2000-2025) 申请/授权年度演进趋势轨迹</span>
+            </div>
+            <div class="chart-body">
+                <img class="chart-img" src="charts/chart2_annual_growth_trend.png" alt="图 2">
+            </div>
+        </div>
+
+        <div class="chart-card">
+            <div class="chart-header">
+                <span class="chart-title">🔧 图 3: 全球 Top 10 专利权人 (Assignee) 在 4 大一级技术领域的布局分布 (修正对齐)</span>
+            </div>
+            <div class="chart-body">
+                <img class="chart-img" src="charts/chart3_top10_assignees_category_matrix.png" alt="图 3">
+            </div>
+        </div>
+
+        <div class="chart-card">
+            <div class="chart-header">
+                <span class="chart-title">图 4: 4 大一级技术领域 (感知/控制/决策/支撑) 20年 (2005-2024) 演进趋势对比</span>
+            </div>
+            <div class="chart-body">
+                <img class="chart-img" src="charts/chart4_category_annual_trend.png" alt="图 4">
+            </div>
+        </div>
+
+        <div class="chart-card">
+            <div class="chart-header">
+                <span class="chart-title">图 5: 全球 Top 10 专利权人软硬件系统属性 (软硬件结合/纯软件/纯硬件) 侧重结构 (%)</span>
+            </div>
+            <div class="chart-body">
+                <img class="chart-img" src="charts/chart5_top10_assignees_sys_attributes.png" alt="图 5">
+            </div>
+        </div>
+
+        <div class="chart-card">
+            <div class="chart-header">
+                <span class="chart-title">图 6: 20年 (2005-2024) 软件定义汽车 (SDV) 演进：纯软件算法占比从 15% 攀升至 30%</span>
+            </div>
+            <div class="chart-body">
+                <img class="chart-img" src="charts/chart6_sdv_software_evolution_trend.png" alt="图 6">
+            </div>
+        </div>
+
+        <div class="chart-card">
+            <div class="chart-header">
+                <span class="chart-title">图 7: 4 大一级技术领域 (感知/控制/决策/支撑) 内部软硬件属性结构 (%)</span>
+            </div>
+            <div class="chart-body">
+                <img class="chart-img" src="charts/chart7_field_by_system_attribute_matrix.png" alt="图 7">
+            </div>
+        </div>
+
+        <div class="chart-card">
+            <div class="chart-header">
+                <span class="chart-title">图 8: 全球主要申请国家/地区 (USA, Japan, Korea, Germany, China) 专利分布与占比</span>
+            </div>
+            <div class="chart-body">
+                <img class="chart-img" src="charts/chart8_country_origin_distribution.png" alt="图 8">
+            </div>
+        </div>
+
+        <div class="chart-card">
+            <div class="chart-header">
+                <span class="chart-title">图 9: 专利权人机构类型分布 (美国企业 vs 外国跨国企业 vs 个人 vs 政府机构)</span>
+            </div>
+            <div class="chart-body">
+                <img class="chart-img" src="charts/chart9_assignee_entity_types.png" alt="图 9">
+            </div>
+        </div>
+
+        <div class="chart-card">
+            <div class="chart-header">
+                <span class="chart-title">图 10: 自动驾驶 4 大产业板块 (整车厂 OEM vs Tier-1 供应商 vs 芯片传感器 vs 智驾科技) 分布</span>
+            </div>
+            <div class="chart-body">
+                <img class="chart-img" src="charts/chart10_industry_sector_archetypes.png" alt="图 10">
+            </div>
+        </div>
+
+        <div class="chart-card">
+            <div class="chart-header">
+                <span class="chart-title">🌟 图 11: 全球五大自动驾驶创新集群 (硅谷/日本/底特律/德国/韩国) 专利分布对比</span>
+            </div>
+            <div class="chart-body">
+                <img class="chart-img" src="charts/chart11_global_innovation_clusters_comparison.png" alt="图 11">
+            </div>
+        </div>
+
+        <div class="chart-card">
+            <div class="chart-header">
+                <span class="chart-title">🌟 图 12: 全球五大自动驾驶创新集群 × 一级技术领域布局热力图 (%)</span>
+            </div>
+            <div class="chart-body">
+                <img class="chart-img" src="charts/chart12_clusters_by_technology_field_heatmap.png" alt="图 12">
+            </div>
+        </div>
+    </div>
+
+    <div class="folder-box">
+        <h3>📁 12 大主题可视化文件与源码存盘说明</h3>
+        <p>所有 12 大高精图表（300 DPI PNG）及 Python 源码已全量存储在以下专属目录：</p>
+        <ul>
+            <li><b>整合主数据表</b>: <code>D:\ev\paper\自动驾驶专利数据多维可视化9246_DeepSeek正样本_包含专利权人与年份.csv</code></li>
+            <li><b>图表文件存储目录</b>: <code>D:\ev\paper\自动驾驶专利数据多维可视化\charts\</code></li>
+            <li><b>Python 代码存储目录</b>: <code>D:\ev\paper\自动驾驶专利数据多维可视化\code\</code></li>
+        </ul>
+    </div>
+
+</body>
+</html>

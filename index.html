@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Te Lai (赖特) | Applied Economics & Innovation Research</title>
+  <meta name="description" content="Personal academic research website of Te Lai (赖特), predoctoral researcher in applied microeconomics, environmental & energy economics, innovation economics, and cyber-physical systems.">
+  <meta name="keywords" content="Te Lai, 赖特, Environmental Economics, Energy Economics, Innovation Economics, Autonomous Driving Patents, Clean Energy, EV Platforms, Applied Microeconomics">
+  <meta name="author" content="Te Lai">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Te Lai (赖特) - Academic Economics Research Portfolio">
+  <meta property="og:description" content="Applied Microeconomics, Environmental & Energy Economics, Innovation Economics, and Frontier Big Data / LLM Methods.">
+  <meta property="og:image" content="assets/images/Te_Lai.jpg">
+  <meta property="og:type" content="website">
+
+  <!-- Self-hosted fonts (no external CDN dependency) -->
+  <link rel="stylesheet" href="assets/fonts.css">
+
+  <!-- Lucide Icons (self-hosted) -->
+  <script src="assets/js/lucide.min.js"></script>
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- Top Notification / Research Target Banner -->
+  <div class="top-banner">
+    <div class="container">
+      <span data-en="🎯 Currently seeking <strong>Pre-doctoral Research Fellowships & PhD Opportunities in Economics</strong> for 2026–2027"
+            data-cn="🎯 正在申请 <strong>2026–2027 年度经济学 Pre-doc 研究助理与经济学博士项目</strong>">
+        🎯 Currently seeking <strong>Pre-doctoral Research Fellowships & PhD Opportunities in Economics</strong> for 2026–2027
+      </span>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="#about" class="nav-logo">
+        <img src="assets/images/Te_Lai.jpg" alt="Te Lai" class="nav-avatar-mini">
+        <div>
+          <div class="nav-name">Te Lai <span style="font-weight:400; font-size:1.05rem; color:var(--slate-500);">赖特</span></div>
+          <div class="nav-title" data-en="Applied Economics Researcher" data-cn="应用经济学研究学者">Applied Economics Researcher</div>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#about" class="nav-link active" data-en="About" data-cn="关于我">About</a></li>
+        <li><a href="#research" class="nav-link" data-en="Research & Papers" data-cn="研究论文">Research & Papers</a></li>
+        <li><a href="#dashboards" class="nav-link" data-en="Interactive Dashboards" data-cn="交互式大屏">Interactive Dashboards</a></li>
+        <li><a href="#methodology" class="nav-link" data-en="Data & Code" data-cn="数据与代码">Data & Code</a></li>
+        <li><a href="#cv" class="nav-link" data-en="Curriculum Vitae" data-cn="学术简历">Curriculum Vitae</a></li>
+        <li><a href="#projects" class="nav-link" data-en="Other Projects" data-cn="工程与量化">Other Projects</a></li>
+        <li><a href="#contact" class="nav-link" data-en="Contact" data-cn="联系方式">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <div class="lang-switch">
+          <button class="lang-btn active" id="langEn">EN</button>
+          <button class="lang-btn" id="langCn">中文</button>
+        </div>
+        <a href="assets/docs/CV_TeLai_Academic.pdf" target="_blank" class="btn btn-primary btn-sm">
+          <i data-lucide="file-text" style="width:14px; height:14px;"></i>
+          <span data-en="CV (PDF)" data-cn="下载CV">CV (PDF)</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-section" id="about">
+    <div class="container">
+      <div class="hero-grid">
+        <!-- Portrait Column -->
+        <div class="hero-portrait-card">
+          <div class="portrait-wrapper">
+            <img src="assets/images/Te_Lai.jpg" alt="Te Lai Portrait" class="portrait-img">
+          </div>
+          <div class="portrait-affiliation-tag">
+            <strong>Duke Kunshan University</strong>
+            <span>Research Assistant to Prof. Jingbo Cui</span>
+            <span style="color:var(--slate-400); font-size:0.8rem;">University of Michigan M.S. Alum</span>
+          </div>
+        </div>
+
+        <!-- Bio Column -->
+        <div class="hero-content">
+          <div class="hero-credentials-row">
+            <span class="badge badge-navy">M.S. Applied Econ (GPA 4.0/4.0)</span>
+            <span class="badge badge-blue">DKU B.A. (GPA 3.8/4.0)</span>
+            <span class="badge badge-emerald">CFA Level 3 Candidate</span>
+            <span class="badge badge-amber">FRM Level 1</span>
+          </div>
+
+          <h1>Te Lai <span class="cn-name">赖特</span></h1>
+          
+          <div class="hero-subtitle" data-en="Predoctoral Researcher in Environmental & Energy Economics, Innovation Economics, and Cyber-Physical Systems"
+               data-cn="环境与能源经济学、创新经济学与具身物理系统研究学者">
+            Predoctoral Researcher in Environmental & Energy Economics, Innovation Economics, and Cyber-Physical Systems
+          </div>
+
+          <div class="hero-bio" data-en="I am an applied microeconomist and empirical researcher working with Professor Jingbo Cui at Duke Kunshan University. My research focuses on the micro-foundations of technical change, climate policy, and industrial decarbonization. I investigate how underlying physical architectures in clean technology and transportation electrification (EVs and embodied AI) govern the pathways of knowledge recombination, corporate vertical boundaries, and supply chain reorganization. Methodologically, I specialize in combining rigorous causal inference (staggered DID, PPML, panel econometrics) with large-scale big data engineering and frontier Large Language Model (LLM) pipelines across multi-million patent datasets."
+               data-cn="我是昆山杜克大学（DKU）崔静波教授团队的应用微观经济学研究学者。我的核心研究聚焦于技术变革的微观基础、气候环境政策与产业脱碳转型。我探讨清洁能源与交通电动化（电动汽车底盘架构与车载具身AI）底层物理架构的演进如何深刻重塑跨领域知识重组、企业垂直边界与供应链分工格局。在研究方法上，我专长于将严谨的微观计量因果推断（交错双重差分、PPML、面板数据模型）与千万级大规模专利大数据工程及前沿大语言模型（LLM）微观分类框架深度融合。">
+            I am an applied microeconomist and empirical researcher working with Professor Jingbo Cui at Duke Kunshan University. My research focuses on the micro-foundations of technical change, climate policy, and industrial decarbonization. I investigate how underlying physical architectures in clean technology and transportation electrification (EVs and embodied AI) govern the pathways of knowledge recombination, corporate vertical boundaries, and supply chain reorganization. Methodologically, I specialize in combining rigorous causal inference (staggered DID, PPML, panel econometrics) with large-scale big data engineering and frontier Large Language Model (LLM) pipelines across multi-million patent datasets.
+          </div>
+
+          <div class="hero-cta-row">
+            <a href="#flagship" class="btn btn-primary">
+              <i data-lucide="book-open" style="width:16px; height:16px;"></i>
+              <span data-en="Featured Research Trilogy" data-cn="核心工作论文三部曲">Featured Research Trilogy</span>
+            </a>
+            <a href="#dashboards" class="btn btn-outline">
+              <i data-lucide="bar-chart-3" style="width:16px; height:16px;"></i>
+              <span data-en="Explore Dashboards" data-cn="交互可视化大屏">Explore Dashboards</span>
+            </a>
+            <a href="assets/docs/CV_TeLai_Academic.pdf" target="_blank" class="btn btn-outline">
+              <i data-lucide="download" style="width:16px; height:16px;"></i>
+              <span data-en="Academic CV (PDF)" data-cn="学术简历下载">Academic CV (PDF)</span>
+            </a>
+          </div>
+
+          <div class="contact-quicklinks">
+            <a href="mailto:tl243@duke.edu"><i data-lucide="mail" style="width:15px; height:15px;"></i> tl243@duke.edu</a>
+            <span>•</span>
+            <span><i data-lucide="map-pin" style="width:15px; height:15px;"></i> Shenzhen / Durham, NC</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Research Fields Grid -->
+  <section class="section" id="fields">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-en="Research Agenda" data-cn="研究方向">Research Agenda</span>
+        <h2 class="section-title" data-en="Core Fields & Methodological Specializations" data-cn="核心研究领域与方法特长">Core Fields & Methodological Specializations</h2>
+        <p class="section-desc" data-en="Bridging frontier causal microeconometrics, industrial organization, and high-dimensional AI data engineering."
+           data-cn="融合前沿微观因果推断、产业组织理论与高维人工智能数据工程。">
+          Bridging frontier causal microeconometrics, industrial organization, and high-dimensional AI data engineering.
+        </p>
+      </div>
+
+      <div class="fields-grid">
+        <div class="field-card">
+          <div class="field-icon"><i data-lucide="leaf"></i></div>
+          <h3 class="field-title" data-en="Environmental & Energy Economics" data-cn="环境与能源经济学">Environmental & Energy Economics</h3>
+          <p class="field-desc" data-en="Causal evaluation of carbon taxes versus Emissions Trading Schemes (ETS), renewable portfolio standards, and policy-driven induced technological change in global clean energy."
+             data-cn="量化评估全球碳税与碳排放权交易体系（ETS）对清洁能源创新的因果效应，研究可再生能源政策激励下的技术诱发效应。">
+            Causal evaluation of carbon taxes versus Emissions Trading Schemes (ETS), renewable portfolio standards, and policy-driven induced technological change in global clean energy.
+          </p>
+        </div>
+
+        <div class="field-card">
+          <div class="field-icon"><i data-lucide="cpu"></i></div>
+          <h3 class="field-title" data-en="Innovation & Technical Architecture" data-cn="技术创新与产品架构">Innovation & Technical Architecture</h3>
+          <p class="field-desc" data-en="Analyzing how physical interface architecture (modular vs. integral) shapes recombinant search frictions, architectural knowledge codification, and corporate adaptation failures."
+             data-cn="检验产品物理接口架构（模块化与集成化）如何约束知识重组搜索，探讨架构知识固化对传统企业转型的阻碍与机制。">
+            Analyzing how physical interface architecture (modular vs. integral) shapes recombinant search frictions, architectural knowledge codification, and corporate adaptation failures.
+          </p>
+        </div>
+
+        <div class="field-card">
+          <div class="field-icon"><i data-lucide="car"></i></div>
+          <h3 class="field-title" data-en="Cyber-Physical Systems & Supply Chains" data-cn="交通电动化与具身AI创新">Cyber-Physical Systems & Supply Chains</h3>
+          <p class="field-desc" data-en="Empirical mapping of transportation electrification, chassis control interfaces (VMC API), OEM upward intrusion, and Tier-1 mega-supplier commoditization."
+             data-cn="全景追踪交通电动化供应链，实证检验智能底盘控制接口标准化、整车厂知识向上渗透及核心一级供应商技术同质化退守。">
+            Empirical mapping of transportation electrification, chassis control interfaces (VMC API), OEM upward intrusion, and Tier-1 mega-supplier commoditization.
+          </p>
+        </div>
+
+        <div class="field-card">
+          <div class="field-icon"><i data-lucide="binary"></i></div>
+          <h3 class="field-title" data-en="Big Data, Text-as-Data & LLMs in Economics" data-cn="大数据、文本分析与计量经济学">Big Data, Text-as-Data & LLMs in Economics</h3>
+          <p class="field-desc" data-en="Harnessing LLM architectures (DeepSeek, ChatGPT) to classify 5M+ patents into 500+ categories (80% accuracy vs 25% IEA baseline), paired with PatentSBERTa embeddings and DuckDB."
+             data-cn="构建基于大语言模型的微观专利分类验证管线，实现500万件专利的500+细分类目标注（准确率达80%，远超IEA基线25%），结合高维语义嵌入。">
+            Harnessing LLM architectures (DeepSeek, ChatGPT) to classify 5M+ patents into 500+ categories (80% accuracy vs 25% IEA baseline), paired with PatentSBERTa embeddings and DuckDB.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Working Paper Section (The Trilogy) -->
+  <section class="section section-alt" id="flagship">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-en="Featured Working Paper Series (October 2026)" data-cn="重点工作论文三部曲（2026年10月）">Featured Working Paper Series (October 2026)</span>
+        <h2 class="section-title" data-en="Flagship Research Trilogy" data-cn="核心学术代表作：汽车技术架构与知识重组">Flagship Research Trilogy</h2>
+        <p class="section-desc" data-en="A comprehensive multi-study research program leveraging multi-million patent datasets, platform engineering breakdowns, and dyadic supply chain networks."
+           data-cn="基于全量专利微观库、25家全球车企152个平台三维工程拆解库及供应链对偶网络的大型系列研究体系。">
+          A comprehensive multi-study research program leveraging multi-million patent datasets, platform engineering breakdowns, and dyadic supply chain networks.
+        </p>
+      </div>
+
+      <!-- Main Trilogy Card -->
+      <div class="featured-paper-card">
+        <div class="paper-meta-top">
+          <div style="display:flex; gap:0.5rem; align-items:center;">
+            <span class="badge badge-navy">Working Paper Series</span>
+            <span class="badge badge-emerald">Comprehensive Working Paper Proposal</span>
+          </div>
+          <span style="font-size:0.85rem; color:var(--slate-500); font-weight:500;">JEL: O31, O32, L22, L23, L62</span>
+        </div>
+
+        <h3 class="paper-title">
+          Technical Architecture, Knowledge Recombination, and the Vertical Boundary of the Firm: Empirical Evidence from Cyber-Physical Innovation in the Automotive Industry
+        </h3>
+
+        <div class="paper-authors">
+          <strong>Te Lai</strong> (Duke Kunshan University) &nbsp;•&nbsp; October 2026
+        </div>
+
+        <!-- The 3 Sequential Studies -->
+        <div class="trilogy-tabs">
+          <div class="trilogy-box">
+            <h4><i data-lucide="layers" style="width:16px; height:16px; color:var(--accent);"></i> Study 1: Macro Paradigm Symbiosis</h4>
+            <div class="trilogy-target">Target: PNAS / Nature Energy</div>
+            <p class="trilogy-desc" data-en="Documents clean electric platforms as the physical conduit for embodied AI over ICEs. Deploys 3.2M electric powertrain, 5.8M ICE, and 510K autonomous driving patents with 48.9K 768-D PatentSBERTa embeddings to capture a -15.6% semantic distance collapse."
+               data-cn="揭示清洁纯电架构作为具身AI物理底座的必然性。基于320.8万动力总成专利与51万自动驾驶专利全库，发现768维语义距离呈现-15.6%的断崖式坍缩收敛。">
+              Documents clean electric platforms as the physical conduit for embodied AI over ICEs. Deploys 3.2M electric powertrain, 5.8M ICE, and 510K autonomous driving patents with 48.9K 768-D PatentSBERTa embeddings to capture a -15.6% semantic distance collapse.
+            </p>
+          </div>
+
+          <div class="trilogy-box">
+            <h4><i data-lucide="factory" style="width:16px; height:16px; color:var(--accent);"></i> Study 2: Intra-Firm Architectural Reorganization</h4>
+            <div class="trilogy-target">Target: Research Policy / Management Science</div>
+            <p class="trilogy-desc" data-en="Formulates a within-firm natural experiment across 25 global automakers (152 platform generations, 264 models). Exploits the 2–10 year 'Conversion EV' retrofitting window to show modular substitution yields zero recombinant growth, whereas native platforms trigger persistent jumps."
+               data-cn="构建全球25家车企152个平台代际的自然实验。利用16家传统车企2-10年的“油改电”过渡反事实窗口，证明模块拼凑陷入停滞，而原生平台重构触发结构性爆发。">
+              Formulates a within-firm natural experiment across 25 global automakers (152 platform generations, 264 models). Exploits the 2–10 year 'Conversion EV' retrofitting window to show modular substitution yields zero recombinant growth, whereas native platforms trigger persistent jumps.
+            </p>
+          </div>
+
+          <div class="trilogy-box">
+            <h4><i data-lucide="git-merge" style="width:16px; height:16px; color:var(--accent);"></i> Study 3: Inter-Firm Innovation Chains</h4>
+            <div class="trilogy-target">Target: Strategic Management Journal / Research Policy</div>
+            <p class="trilogy-desc" data-en="Examines OEM-supplier vertical boundaries under standardized vehicle motion control (VMC API). Using 111K patents from top-10 chassis mega-suppliers (Bosch, Continental, ZF) and dyadic citations, proves OEM upward intrusion and supplier commoditization."
+               data-cn="检验底层控制接口标准化对车企与一级供应商边界的重构。依托前十大底盘Tier-1全量专利库与双向引用网络，证实整车厂向上侵入控制算法，供应商向机电硬件退守并同质化。">
+              Examines OEM-supplier vertical boundaries under standardized vehicle motion control (VMC API). Using 111K patents from top-10 chassis mega-suppliers (Bosch, Continental, ZF) and dyadic citations, proves OEM upward intrusion and supplier commoditization.
+            </p>
+          </div>
+        </div>
+
+        <!-- Abstract -->
+        <div class="paper-abstract">
+          <strong>Abstract:</strong> How do shifts in underlying technical architecture govern the micro-foundations of knowledge recombination and the vertical boundaries of the firm? Existing innovation economics largely attributes search frictions to cognitive distance or organizational boundaries, while the digital innovation literature widely presumes that layered modular architectures enable frictionless software-hardware decoupling. In cyber-physical systems, however, cognitive algorithms must execute through electromechanical actuators governed by microsecond-level deterministic feedback loops. Under these conditions, the physical interface architecture functions as the binding conduit for recombinant search.
+          <br><br>
+          We investigate this across three sequentially linked studies spanning 3.2M electric powertrain patents, 5.8M ICE patents, 510K verified autonomous driving patents, 152 platform generations across 25 automakers, and 111K Tier-1 supplier patents. We document sharp distributional collapse in 768-dimensional PatentSBERTa embeddings, exploit a 2- to 10-year within-firm modular retrofit ("Conversion EV") counterfactual window, and demonstrate how standardized abstraction layers induce OEM upward intrusion and supplier commoditization.
+        </div>
+
+        <!-- Stylized Fact Figures Preview Gallery -->
+        <div class="paper-figures-preview">
+          <h4><i data-lucide="image" style="width:16px; height:16px;"></i> Key Stylized Fact Figures (Click to Enlarge & Inspect)</h4>
+          <div class="figures-grid">
+            <div class="figure-thumb" data-figure="fig1">
+              <img src="assets/images/Fig1_bipartite_network.png" alt="Fig 1 Bipartite Network">
+              <div class="figure-caption">Fig 1: Bipartite Knowledge Recombination Network (EV vs. ICE)</div>
+            </div>
+
+            <div class="figure-thumb" data-figure="fig2">
+              <img src="assets/images/Fig2_semantic_distance_collapse.png" alt="Fig 2 Semantic Distance">
+              <div class="figure-caption">Fig 2: 768-D PatentSBERTa Semantic Distance Collapse (-15.6%)</div>
+            </div>
+
+            <div class="figure-thumb" data-figure="fig3">
+              <img src="assets/images/Fig3_placebo_trajectory.png" alt="Fig 3 Placebo Trajectory">
+              <div class="figure-caption">Fig 3: Placebo Disentanglement: Planning & Control (+11.1x)</div>
+            </div>
+
+            <div class="figure-thumb" data-figure="fig4">
+              <img src="assets/images/Fig4_oem_platform_transition.png" alt="Fig 4 OEM Platform Spectrum">
+              <div class="figure-caption">Fig 4: Global Automaker Platform Spectrum & Counterfactual Window</div>
+            </div>
+
+            <div class="figure-thumb" data-figure="fig5">
+              <img src="assets/images/Fig5_tier1_boundary.png" alt="Fig 5 Tier-1 Boundary Reorganization">
+              <div class="figure-caption">Fig 5: Vertical Boundary Reorganization & Tier-1 Commoditization</div>
+            </div>
+
+            <div class="figure-thumb" data-figure="fig_event">
+              <img src="assets/images/Fig4_event_study.png" alt="Event Study: True vs Placebo">
+              <div class="figure-caption">Fig 6: Event Study - True Event vs. Placebo Dynamics</div>
+            </div>
+
+            <div class="figure-thumb" data-figure="fig_paradigm">
+              <img src="assets/images/Fig1_sankey_paradigm.png" alt="Technology Portfolio Composition 2008-2024">
+              <div class="figure-caption">Fig 7: Technology Portfolio Composition (2008-2024)</div>
+            </div>
+            <div class="figure-thumb" data-figure="fig_pipeline">
+              <img src="assets/images/EV_Pipeline_Flowchart_EN.png" alt="Data Engineering Pipeline">
+              <div class="figure-caption">Fig 8: End-to-End Patent Data Engineering Pipeline</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="paper-actions-bar">
+          <div class="paper-buttons">
+            <a href="assets/docs/Technical_Architecture_and_Embodied_AI_Trilogy_Proposal.pdf" target="_blank" class="btn btn-primary btn-sm">
+              <i data-lucide="download" style="width:14px; height:14px;"></i> Download Trilogy Proposal (English PDF • 2.2MB)
+            </a>
+            <a href="assets/docs/Technical_Architecture_and_Embodied_AI_Trilogy_Proposal_CN.pdf" target="_blank" class="btn btn-outline btn-sm">
+              <i data-lucide="file-text" style="width:14px; height:14px;"></i> 中文计划书全案 (PDF • 2.4MB)
+            </a>
+            <a href="assets/docs/presentation_academic_en.pdf" target="_blank" class="btn btn-outline btn-sm">
+              <i data-lucide="presentation" style="width:14px; height:14px;"></i> Presentation Slides (EN PDF)
+            </a>
+            <a href="assets/docs/presentation_academic.pdf" target="_blank" class="btn btn-outline btn-sm">
+              <i data-lucide="presentation" style="width:14px; height:14px;"></i> 汇报答辩PPT (中文 PDF)
+            </a>
+            <a href="assets/docs/oem_platform_master_v1.xlsx" download class="btn btn-outline btn-sm">
+              <i data-lucide="database" style="width:14px; height:14px;"></i> OEM Platform Master (Excel)
+            </a>
+          </div>
+
+          <button class="btn btn-outline btn-sm" data-bibtex="bib_trilogy">
+            <i data-lucide="copy" style="width:14px; height:14px;"></i> Copy BibTeX
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Working Papers & Academic Research -->
+  <section class="section" id="research">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-en="Publications & Working Papers" data-cn="学术论著与工作论文">Publications & Working Papers</span>
+        <h2 class="section-title" data-en="Co-Authored & Ongoing Research" data-cn="合作论文与在研项目">Co-Authored & Ongoing Research</h2>
+        <p class="section-desc" data-en="Collaborative empirical inquiries into environmental taxation, emission trading schemes, and network centrality."
+           data-cn="在环境税制、碳交易机制及产业网络溢出领域的实证合作研究。">
+          Collaborative empirical inquiries into environmental taxation, emission trading schemes, and network centrality.
+        </p>
+      </div>
+
+      <!-- Working Paper 2: Carbon Pricing -->
+      <div class="working-paper-item">
+        <div class="wp-header">
+          <h3 class="wp-title">Global Carbon Pricing and Clean Energy Innovation</h3>
+          <span class="badge badge-emerald">Working Paper (2026)</span>
+        </div>
+        <div class="wp-meta">
+          <strong>Jingbo Cui</strong> (Duke Kunshan University), <strong>Te Lai</strong> (Duke Kunshan University), and <strong>Yang Zheng</strong> (Aston Business School & LSE Grantham)
+        </div>
+        <div class="wp-abstract" data-en="This paper provides a comprehensive causal evaluation of the impacts of carbon taxes versus Emissions Trading Schemes (ETS) on global clean energy innovation. To map over 5 million granted international patents (1990–2022) to more than 600 granular technologies in the International Energy Agency’s (IEA) Clean Energy Technology Guide, we designed a hybrid multi-model consensus pipeline integrating Large Language Models (DeepSeek, ChatGPT, Gemini). The methodology achieves an unprecedented 80% classification accuracy against expert spot-checks, outperforming standard IPC/CPC taxonomies (25%). Econometrically, we employ staggered Difference-in-Differences (DID) and Poisson Pseudo-Maximum Likelihood (PPML) regressions to isolate policy-induced technological transitions across technology readiness levels (TRLs)."
+             data-cn="本文系统实证评估了全球碳税与碳排放权交易体系（ETS）对清洁能源技术创新的因果影响。为将全球1990至2022年超500万件授权专利精准对齐至国际能源署（IEA）清洁技术指南的600+细分类目，我们设计了融合DeepSeek、ChatGPT与Gemini的大模型多智能体共识分类管线，专家抽样验证准确率达80%，显著超越传统IPC/CPC基准（25%）。计量上采用交错双重差分（Staggered DID）与泊松伪最大似然估计（PPML），检验政策工具在不同技术成熟度（TRL）上的非对称激励。">
+          This paper provides a comprehensive causal evaluation of the impacts of carbon taxes versus Emissions Trading Schemes (ETS) on global clean energy innovation. To map over 5 million granted international patents (1990–2022) to more than 600 granular technologies in the International Energy Agency’s (IEA) Clean Energy Technology Guide, we designed a hybrid multi-model consensus pipeline integrating Large Language Models (DeepSeek, ChatGPT, Gemini). The methodology achieves an unprecedented 80% classification accuracy against expert spot-checks, outperforming standard IPC/CPC taxonomies (25%). Econometrically, we employ staggered Difference-in-Differences (DID) and Poisson Pseudo-Maximum Likelihood (PPML) regressions to isolate policy-induced technological transitions across technology readiness levels (TRLs).
+        </div>
+        <div class="wp-actions">
+          <span class="badge badge-blue">Method: Staggered DID & PPML</span>
+          <span class="badge badge-navy">Data: 5M+ Global Patents</span>
+          <span class="badge badge-emerald">LLM: DeepSeek / Gemini Consensus</span>
+          <button class="btn btn-outline btn-sm" data-bibtex="bib_carbon">
+            <i data-lucide="copy" style="width:14px; height:14px;"></i> Copy BibTeX
+          </button>
+        </div>
+      </div>
+
+      <!-- Working Paper 3: Patent Network Evolution -->
+      <div class="working-paper-item">
+        <div class="wp-header">
+          <h3 class="wp-title">The Evolution of The Network: The Evidence from China</h3>
+          <span class="badge badge-blue">Conference Proceeding / Under Review</span>
+        </div>
+        <div class="wp-meta">
+          <strong>Jingbo Cui</strong> (Duke Kunshan University) and <strong>Te Lai</strong> (Duke Kunshan University) &nbsp;•&nbsp; Presented at <em>The 6th East Asian Association of Environmental and Resource Economics (AAERE) Conference</em>, Seoul National University
+        </div>
+        <div class="wp-abstract" data-en="Using a large panel of over 500,000 collaborative patent records and financial metrics across 5,000+ Chinese listed companies, this paper executes the first systematic longitudinal visualization and econometric study of national corporate patent networks in China. Using social network analysis in Python and fixed-effects panel regressions in Stata, we quantify the centrality of firms within the collaborative topology and demonstrate that network centrality confers a statistically significant 0.3% excess return and strongly accelerates green technology absorption."
+             data-cn="基于中国5000余家上市公司超过50万条合作专利与财务面板数据，本文首次系统绘制了中国企业专利协作网络的长期演变图景。结合Python社交网络分析算法与Stata高维固定效应面板回归，量化测算了企业网络中心度指标，证实网络中心位置能带来0.3%的显著超额收益，并显著加速绿色低碳技术的跨企业溢出与吸收。">
+          Using a large panel of over 500,000 collaborative patent records and financial metrics across 5,000+ Chinese listed companies, this paper executes the first systematic longitudinal visualization and econometric study of national corporate patent networks in China. Using social network analysis in Python and fixed-effects panel regressions in Stata, we quantify the centrality of firms within the collaborative topology and demonstrate that network centrality confers a statistically significant 0.3% excess return and strongly accelerates green technology absorption.
+        </div>
+        <div class="wp-actions">
+          <a href="assets/docs/greennetwork_paper.pdf" target="_blank" class="btn btn-outline btn-sm">
+            <i data-lucide="file-text" style="width:14px; height:14px;"></i> Manuscript Draft (PDF)
+          </a>
+          <a href="assets/docs/AAERE_Conference_Slides.pdf" target="_blank" class="btn btn-outline btn-sm">
+            <i data-lucide="presentation" style="width:14px; height:14px;"></i> AAERE Conference Slides (PDF)
+          </a>
+          <button class="btn btn-outline btn-sm" data-bibtex="bib_network">
+            <i data-lucide="copy" style="width:14px; height:14px;"></i> Copy BibTeX
+          </button>
+        </div>
+      </div>
+
+      <!-- Undergraduate Thesis / Signature Work -->
+      <div class="working-paper-item">
+        <div class="wp-header">
+          <h3 class="wp-title">The Evolution of Green Innovation Network: Stylized Facts from Chinese Listed Firms</h3>
+          <span class="badge badge-amber">DKU Signature Work (Dean's Honor)</span>
+        </div>
+        <div class="wp-meta">
+          <strong>Te Lai</strong> &nbsp;•&nbsp; Advisor: Prof. Jingbo Cui &nbsp;•&nbsp; Duke Kunshan University Capstone Thesis
+        </div>
+        <div class="wp-abstract" data-en="Investigates how corporate social responsibility (CSR) and institutional shareholder oversight interact with green patenting networks among energy and industrial firms in China. Identifies significant structural clustering in clean technology adoption and analyzes how institutional investors mitigate stock price crash risks through green innovation monitoring."
+             data-cn="探讨企业社会责任（CSR）与机构投资者监督如何在中国能源与工业企业的绿色专利协作网络中发挥治理效应。揭示了清洁技术采纳中的显著结构性聚类特征，阐释了机构投资者如何通过绿色创新引导缓解股价崩盘风险。">
+          Investigates how corporate social responsibility (CSR) and institutional shareholder oversight interact with green patenting networks among energy and industrial firms in China. Identifies significant structural clustering in clean technology adoption and analyzes how institutional investors mitigate stock price crash risks through green innovation monitoring.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Visualizations & Dashboards Section -->
+  <section class="section section-alt" id="dashboards">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-en="Frontier Interactive Demonstrations" data-cn="前沿交互可视化展台">Frontier Interactive Demonstrations</span>
+        <h2 class="section-title" data-en="Interactive Research Dashboards & Pipelines" data-cn="交互式研究大屏与技术扩散分析">Interactive Research Dashboards & Pipelines</h2>
+        <p class="section-desc" data-en="Interactive tools developed for this research program, rendering multi-million patent trajectories, global diffusion flows, and end-to-end data pipelines."
+           data-cn="为本课题专门研发的交互式分析大屏，动态呈现千万级专利轨迹、全球技术扩散桑基图与端到端数据管线。">
+          Interactive tools developed for this research program, rendering multi-million patent trajectories, global diffusion flows, and end-to-end data pipelines.
+        </p>
+      </div>
+
+      <div class="dashboards-grid">
+        <!-- Dashboard 1: Sankey -->
+        <div class="dashboard-card">
+          <div class="dashboard-preview">
+            <iframe src="dashboards/autodriving_technology_diffusion_sankey.html" title="Sankey Preview" loading="lazy"></iframe>
+            <div class="dashboard-preview-overlay">
+              <a href="dashboards/autodriving_technology_diffusion_sankey.html" target="_blank" class="btn btn-primary btn-sm">
+                <i data-lucide="external-link" style="width:14px; height:14px;"></i> Open Fullscreen
+              </a>
+            </div>
+          </div>
+          <div class="dashboard-body">
+            <span class="dashboard-badge">Global Citation Diffusion</span>
+            <h3 class="dashboard-title">Autonomous Driving Tech Diffusion Sankey</h3>
+            <p class="dashboard-desc" data-en="Interactive multi-stage Sankey diagram mapping cross-border technology diffusion across top-5 countries (US, CN, DE, JP, KR, RoW) and L1–L4 autonomous driving subsystems."
+               data-cn="交互式多阶段技术扩散桑基图，追踪中美德日韩及全球其他地区在自动驾驶L1-L4层级核心技术上的跨国引用流动。">
+              Interactive multi-stage Sankey diagram mapping cross-border technology diffusion across top-5 countries (US, CN, DE, JP, KR, RoW) and L1–L4 autonomous driving subsystems.
+            </p>
+            <a href="dashboards/autodriving_technology_diffusion_sankey.html" target="_blank" class="btn btn-outline btn-sm">
+              <i data-lucide="play" style="width:14px; height:14px;"></i> Launch Interactive View
+            </a>
+          </div>
+        </div>
+
+        <!-- Dashboard 2: 12-Theme Big Screen -->
+        <div class="dashboard-card">
+          <div class="dashboard-preview">
+            <iframe src="dashboards/index_12theme_dashboard.html" title="12-Theme Big Screen Preview" loading="lazy"></iframe>
+            <div class="dashboard-preview-overlay">
+              <a href="dashboards/index_12theme_dashboard.html" target="_blank" class="btn btn-primary btn-sm">
+                <i data-lucide="external-link" style="width:14px; height:14px;"></i> Open Fullscreen
+              </a>
+            </div>
+          </div>
+          <div class="dashboard-body">
+            <span class="dashboard-badge">DeepSeek 49,246 Verified Sample</span>
+            <h3 class="dashboard-title">12-Dimension Patent Intelligence Screen</h3>
+            <p class="dashboard-desc" data-en="Comprehensive analytics dashboard displaying top 15 assignees, SDV software trends, entity classifications, geographic clusters, and IPC distribution."
+               data-cn="基于DeepSeek严谨分类抽检确证的49,246件全样本大屏，全方位展示Top15专利权人矩阵、软件定义汽车演进及跨国集群热力分布。">
+              Comprehensive analytics dashboard displaying top 15 assignees, SDV software trends, entity classifications, geographic clusters, and IPC distribution.
+            </p>
+            <a href="dashboards/index_12theme_dashboard.html" target="_blank" class="btn btn-outline btn-sm">
+              <i data-lucide="play" style="width:14px; height:14px;"></i> Launch Interactive View
+            </a>
+          </div>
+        </div>
+
+        <!-- Dashboard 3: Pipeline Diagram -->
+        <div class="dashboard-card">
+          <div class="dashboard-preview">
+            <iframe src="dashboards/patent_data_pipeline_diagram_en.html" title="Data Pipeline Preview" loading="lazy"></iframe>
+            <div class="dashboard-preview-overlay">
+              <a href="dashboards/patent_data_pipeline_diagram_en.html" target="_blank" class="btn btn-primary btn-sm">
+                <i data-lucide="external-link" style="width:14px; height:14px;"></i> Open Fullscreen
+              </a>
+            </div>
+          </div>
+          <div class="dashboard-body">
+            <span class="dashboard-badge">End-to-End Architecture</span>
+            <h3 class="dashboard-title">Global Patent Data Pipeline Architecture</h3>
+            <p class="dashboard-desc" data-en="Interactive architectural flowchart illustrating the ingestion, geocoding, LLM classification, deduplication, and DuckDB storage of 10M+ patent records."
+               data-cn="千万级专利全生命周期数据工程交互图谱，详尽展现数据摄入、地理编码、大模型微观标注、同族去重与DuckDB高效存储全流程。">
+              Interactive architectural flowchart illustrating the ingestion, geocoding, LLM classification, deduplication, and DuckDB storage of 10M+ patent records.
+            </p>
+            <a href="dashboards/patent_data_pipeline_diagram_en.html" target="_blank" class="btn btn-outline btn-sm">
+              <i data-lucide="play" style="width:14px; height:14px;"></i> Launch Interactive View
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Methodology & Open Data Infrastructure -->
+  <section class="section" id="methodology">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-en="Methodology & Data Assets" data-cn="数据基座与方法创新">Methodology & Data Assets</span>
+        <h2 class="section-title" data-en="Frontier Data Infrastructure in Economics" data-cn="经济学前沿数据工程与开源资产">Frontier Data Infrastructure in Economics</h2>
+        <p class="section-desc" data-en="Engineered datasets, machine learning pipelines, and replication assets powering empirical discoveries."
+           data-cn="支撑实证因果发现的大规模清洗库、机器学习管线与可复现性研究资产。">
+          Engineered datasets, machine learning pipelines, and replication assets powering empirical discoveries.
+        </p>
+      </div>
+
+      <div class="methodology-grid">
+        <div class="method-card">
+          <div class="method-stat">80.2%</div>
+          <div class="method-label">LLM Classification Accuracy</div>
+          <h3 class="method-title">DeepSeek / LLM Green Tech Classifier</h3>
+          <p class="method-text" data-en="Engineered prompt frameworks & validation consensus across DeepSeek, ChatGPT, and Gemini to classify 5M+ international patents into 500+ granular clean technology categories. Significantly outperforms standard IEA / IPC keyword heuristics (25%)."
+             data-cn="针对500+清洁技术复杂分类树，构建提示词工程与模型交叉质检体系，将500万件国际专利精准归类，验证准确率高达80.2%（远超IEA基准25%）。">
+            Engineered prompt frameworks & validation consensus across DeepSeek, ChatGPT, and Gemini to classify 5M+ international patents into 500+ granular clean technology categories. Significantly outperforms standard IEA / IPC keyword heuristics (25%).
+          </p>
+        </div>
+
+        <div class="method-card">
+          <div class="method-stat">152</div>
+          <div class="method-label">Platform Generations Cataloged</div>
+          <h3 class="method-title">Global OEM Platform Master Dataset</h3>
+          <p class="method-text" data-en="Exhaustive hand-curated engineering dataset spanning 25 global automaker conglomerates, 152 platform generations, and 264 vehicle models. Establishes chronological windows for modular 'Conversion EVs' vs native pure-electric skateboard architectures."
+             data-cn="手工构建的全球25大车企集团三维拆解主数据库，覆盖152个平台代际与264款车型，确立了油改电过渡期与原生纯电平台的准自然实验外生时间谱。">
+            Exhaustive hand-curated engineering dataset spanning 25 global automaker conglomerates, 152 platform generations, and 264 vehicle models. Establishes chronological windows for modular 'Conversion EVs' vs native pure-electric skateboard architectures.
+          </p>
+          <div style="margin-top:1rem; display:flex; gap:0.5rem;">
+            <a href="assets/docs/oem_platform_master_v1.xlsx" download class="btn btn-outline btn-sm">Download .xlsx</a>
+            <a href="assets/docs/oem_platform_master_v1.csv" download class="btn btn-outline btn-sm">Download .csv</a>
+          </div>
+        </div>
+
+        <div class="method-card">
+          <div class="method-stat">48.9K</div>
+          <div class="method-label">PatentSBERTa Vectors</div>
+          <h3 class="method-title">768-D Semantic Distance Vector Pipeline</h3>
+          <p class="method-text" data-en="Constructed high-dimensional sentence-transformer embeddings of patent claims using PatentSBERTa and HuggingFace, executing cosine distance collapse calculations across electromechanical chassis actuators and cognitive planning algorithms."
+             data-cn="利用PatentSBERTa与HuggingFace提取专利权利要求书的768维语义向量，量化物理底盘硬件与认知规控算法之间在向量空间中的距离坍缩。">
+            Constructed high-dimensional sentence-transformer embeddings of patent claims using PatentSBERTa and HuggingFace, executing cosine distance collapse calculations across electromechanical chassis actuators and cognitive planning algorithms.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Curriculum Vitae Section -->
+  <section class="section section-alt" id="cv">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-en="Curriculum Vitae" data-cn="学术简历">Curriculum Vitae</span>
+        <h2 class="section-title" data-en="Education, Honors & Qualifications" data-cn="教育背景、荣誉与学术经历">Education, Honors & Qualifications</h2>
+        <p class="section-desc" data-en="Comprehensive academic record and technical training in economics and quantitative methods."
+           data-cn="系统扎实的经济学理论功底、微观因果计量与量化分析训练。">
+          Comprehensive academic record and technical training in economics and quantitative methods.
+        </p>
+      </div>
+
+      <!-- Recommendation Quote Highlight -->
+      <div class="quote-card">
+        <div class="quote-text">
+          "Based on my direct observation of his technical capabilities, empirical rigor, and intellectual independence, I rate Te among the top 1–2% of pre-doctoral researchers I have worked with in applied economics and environmental research... He executed the econometrics using staggered difference-in-differences and PPML regressions to address cohort heterogeneity with acute sensitivity to identification assumptions and data integrity."
+        </div>
+        <div class="quote-author">
+          Dr. Yang Zheng <span>— Lecturer (Assistant Professor) in Economics, Aston Business School; Visiting Senior Fellow, Grantham Research Institute, London School of Economics (LSE)</span>
+        </div>
+      </div>
+
+      <!-- Education Block -->
+      <div class="cv-block">
+        <h3 class="cv-section-title">
+          <span><i data-lucide="graduation-cap" style="width:20px; height:20px; color:var(--accent);"></i> Education</span>
+        </h3>
+
+        <div class="cv-item">
+          <div class="cv-item-header">
+            <div>
+              <div class="cv-degree">Master of Science in Applied Economics</div>
+              <div class="cv-school">University of Michigan, Ann Arbor</div>
+            </div>
+            <div class="cv-date">08/2022 – 12/2023</div>
+          </div>
+          <div class="cv-details">
+            <strong>Cumulative GPA: 4.0 / 4.0</strong>
+          </div>
+          <ul class="cv-bullets">
+            <li><strong>Advanced Coursework</strong>: Advanced Econometrics (Causal Inference, Panel Data Methods), Python for Data Science, Business Data Analytics, Financial Modeling, Valuation Analysis.</li>
+            <li>Conducted advanced empirical econometric modeling, causal inference identification strategies, and large-scale data wrangling.</li>
+          </ul>
+        </div>
+
+        <div class="cv-item">
+          <div class="cv-item-header">
+            <div>
+              <div class="cv-degree">Bachelor of Arts in Political Economy</div>
+              <div class="cv-school">Duke Kunshan University (Partner Institution of Duke University)</div>
+            </div>
+            <div class="cv-date">08/2018 – 05/2022</div>
+          </div>
+          <div class="cv-details">
+            <strong>Cumulative GPA: 3.8 / 4.0</strong> &nbsp;•&nbsp; <strong>Honors: Fall 2020 Dean's List</strong>
+          </div>
+          <ul class="cv-bullets">
+            <li><strong>Core Coursework</strong>: Probability & Statistics, Multivariable Calculus, Intermediate Microeconomics, Intermediate Macroeconomics, Econometrics, Public Policy.</li>
+            <li>Conducted undergraduate capstone thesis (Signature Work) on national patent collaboration networks under Prof. Jingbo Cui.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Research Experience Block -->
+      <div class="cv-block">
+        <h3 class="cv-section-title">
+          <span><i data-lucide="briefcase" style="width:20px; height:20px; color:var(--accent);"></i> Research Experience</span>
+        </h3>
+
+        <div class="cv-item">
+          <div class="cv-item-header">
+            <div>
+              <div class="cv-degree">Research Assistant in Environmental & Innovation Economics</div>
+              <div class="cv-school">Duke Kunshan University (Advisor: Prof. Jingbo Cui)</div>
+            </div>
+            <div class="cv-date">02/2024 – Present</div>
+          </div>
+          <ul class="cv-bullets">
+            <li><strong>Global Carbon Pricing Project</strong>: Co-authored working paper on carbon taxes and ETS effects on clean innovation using staggered DID and PPML specifications.</li>
+            <li><strong>LLM Taxonomy Integration</strong>: Designed prompting and validation pipelines utilizing DeepSeek and OpenAI APIs to classify 5M+ international patents into 500+ green categories (80% accuracy).</li>
+            <li><strong>Automotive Technical Architecture Trilogy</strong>: Curated and engineered multi-million global patent records (Lens, USPTO, EPO, Orbis), constructed platform databases across 25 automakers, and executed high-dimensional semantic embeddings.</li>
+          </ul>
+        </div>
+
+        <div class="cv-item">
+          <div class="cv-item-header">
+            <div>
+              <div class="cv-degree">Research Assistant (Patent Network & Firm Performance)</div>
+              <div class="cv-school">Duke Kunshan University (Advisor: Prof. Jingbo Cui)</div>
+            </div>
+            <div class="cv-date">05/2021 – 03/2022</div>
+          </div>
+          <ul class="cv-bullets">
+            <li>Processed over 500,000 patent records and financial statements of 5,000+ Chinese listed companies using Python and Stata.</li>
+            <li>Computed social network centrality metrics, executing panel econometric models identifying a 0.3% excess return from network position.</li>
+            <li>Presented findings at the 6th AAERE Conference hosted by Seoul National University.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Credentials & Technical Skills -->
+      <div class="cv-block">
+        <h3 class="cv-section-title">
+          <span><i data-lucide="award" style="width:20px; height:20px; color:var(--accent);"></i> Credentials & Technical Stack</span>
+        </h3>
+
+        <div style="display:grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;">
+          <div>
+            <h4 style="font-size:1rem; color:var(--primary); margin-bottom:0.5rem;">Professional Credentials</h4>
+            <ul class="cv-bullets">
+              <li><strong>Chartered Financial Analyst (CFA)</strong>: Level 3 Candidate (Passed CFA Level 2)</li>
+              <li><strong>Financial Risk Manager (FRM)</strong>: Level 1 Passed</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 style="font-size:1rem; color:var(--primary); margin-bottom:0.5rem;">Languages</h4>
+            <ul class="cv-bullets">
+              <li><strong>Mandarin Chinese</strong>: Native Speaker</li>
+              <li><strong>English</strong>: Fluent (Full Professional Proficiency)</li>
+            </ul>
+          </div>
+
+          <div style="grid-column: 1 / -1;">
+            <h4 style="font-size:1rem; color:var(--primary); margin-bottom:0.5rem;">Computational & Econometric Tools</h4>
+            <div style="display:flex; flex-wrap:wrap; gap:0.4rem; margin-top:0.35rem;">
+              <span class="badge badge-navy">Python (Pandas, NumPy, Scikit-learn, PyTorch, DuckDB, Selenium, ccxt)</span>
+              <span class="badge badge-blue">Stata</span>
+              <span class="badge badge-blue">R</span>
+              <span class="badge badge-navy">SQL</span>
+              <span class="badge badge-emerald">LaTeX & Typst</span>
+              <span class="badge badge-amber">Git / GitHub</span>
+              <span class="badge badge-navy">Large Databases (Lens, USPTO, EPO, Orbis, Wind, Bloomberg)</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:2rem; text-align:center;">
+          <a href="assets/docs/CV_TeLai_Academic.pdf" target="_blank" class="btn btn-primary">
+            <i data-lucide="download" style="width:16px; height:16px;"></i> Download Complete Academic CV (PDF)
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Software, EdTech & Quantitative Projects -->
+  <section class="section" id="projects">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-en="Software Engineering & Applied AI" data-cn="应用人工智能与工程实践">Software Engineering & Applied AI</span>
+        <h2 class="section-title" data-en="Applied AI Agents & Quantitative Systems" data-cn="智能体系统与量化工程">Applied AI Agents & Quantitative Systems</h2>
+        <p class="section-desc" data-en="Beyond academic econometrics, building autonomous multimodal AI systems and systematic financial engines."
+           data-cn="将人工智能与工程实现扩展至多模态智能体与高频量化风控系统。">
+          Beyond academic econometrics, building autonomous multimodal AI systems and systematic financial engines.
+        </p>
+      </div>
+
+      <div style="display:grid; grid-template-columns: repeat(2, 1fr); gap: 1.75rem;">
+        <!-- Card 1: Automated Grading AI -->
+        <div class="field-card" style="padding:2rem;">
+          <div class="field-icon" style="background:#fef3c7; color:#d97706;"><i data-lucide="bot"></i></div>
+          <h3 class="field-title">Multimodal Automated Grading & Classroom Agent</h3>
+          <p class="field-desc" style="margin-bottom:1rem;" data-en="Engineered an end-to-end AI system using FastAPI, Chrome Extensions, and multimodal vision models to automatically inspect and grade handwritten high-school physics and chemistry exams. Incorporates automated database migrations, token billing, and cognitive perceptual computer vision loops."
+             data-cn="基于FastAPI、Chrome插件与多模态视觉大模型研发的一体化作业与试卷批改智能体。支持复杂手写体理化大题的机器视觉切片、多步分值推演与智能纠错，并配备自动化数据库迁移与令牌兑换机制。">
+            Engineered an end-to-end AI system using FastAPI, Chrome Extensions, and multimodal vision models to automatically inspect and grade handwritten high-school physics and chemistry exams. Incorporates automated database migrations, token billing, and cognitive perceptual computer vision loops.
+          </p>
+          <div style="display:flex; flex-wrap:wrap; gap:0.4rem;">
+            <span class="badge badge-amber">FastAPI</span>
+            <span class="badge badge-amber">Chrome Extension</span>
+            <span class="badge badge-amber">Computer Vision & OCR</span>
+            <span class="badge badge-amber">SQLite & Alembic</span>
+          </div>
+        </div>
+
+        <!-- Card 2: Quantitative Trading -->
+        <div class="field-card" style="padding:2rem;">
+          <div class="field-icon" style="background:#e0e7ff; color:var(--primary);"><i data-lucide="trending-up"></i></div>
+          <h3 class="field-title">Multi-Timeframe Trend Following & Risk Engine</h3>
+          <p class="field-desc" style="margin-bottom:1rem;" data-en="Developed a systematic algorithmic research pipeline utilizing Python ccxt and Binance OHLCV 1-minute tick data. Implemented strict anti-lookahead backward merge_asof alignment between 4-hour trend filters and 15-minute execution cycles, combined with dynamic EMA 50 trailing stops."
+             data-cn="基于Python ccxt与主流交易所1分钟高频OHLCV数据搭建的量化回测与风控系统。采用严格的向后对齐机制规避未来函数，通过4小时趋势过滤器与15分钟执行周期的双重耦合，结合EMA动态止损控制尾部回撤。">
+            Developed a systematic algorithmic research pipeline utilizing Python ccxt and Binance OHLCV 1-minute tick data. Implemented strict anti-lookahead backward merge_asof alignment between 4-hour trend filters and 15-minute execution cycles, combined with dynamic EMA 50 trailing stops.
+          </p>
+          <div style="display:flex; flex-wrap:wrap; gap:0.4rem;">
+            <span class="badge badge-navy">Python ccxt</span>
+            <span class="badge badge-navy">Pandas merge_asof</span>
+            <span class="badge badge-navy">Risk & Drawdown Control</span>
+            <span class="badge badge-navy">Backtesting Engine</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact & Connect -->
+  <section class="section section-alt" id="contact">
+    <div class="container" style="text-align:center; max-width:760px;">
+      <span class="section-tag" data-en="Get In Touch" data-cn="联系方式">Get In Touch</span>
+      <h2 class="section-title" data-en="Contact & Academic Inquiry" data-cn="学术交流与联络">Contact & Academic Inquiry</h2>
+      <p style="font-size:1.05rem; color:var(--slate-600); margin-bottom:2rem;" data-en="I welcome discussions regarding pre-doctoral research appointments, economics doctoral admissions, co-authorship opportunities, and data engineering collaborations."
+         data-cn="欢迎就经济学Pre-doc研究助理岗位、博士项目申请、论文合作及大数据实证工程进行交流探讨。">
+        I welcome discussions regarding pre-doctoral research appointments, economics doctoral admissions, co-authorship opportunities, and data engineering collaborations.
+      </p>
+
+      <div style="background:#ffffff; border:1px solid var(--slate-200); border-radius:var(--radius-lg); padding:2rem; box-shadow:var(--shadow-sm); margin-bottom:2rem; text-align:left;">
+        <div style="display:grid; grid-template-columns: repeat(2, 1fr); gap:1.5rem;">
+          <div>
+            <div style="font-size:0.8rem; font-weight:700; text-transform:uppercase; color:var(--slate-400); margin-bottom:0.25rem;">Email</div>
+            <a href="mailto:tl243@duke.edu" style="font-size:1.1rem; font-weight:600; color:var(--primary); display:flex; align-items:center; gap:0.4rem;">
+              <i data-lucide="mail" style="width:16px; height:16px;"></i> tl243@duke.edu
+            </a>
+          </div>
+
+          <div>
+            <div style="font-size:0.8rem; font-weight:700; text-transform:uppercase; color:var(--slate-400); margin-bottom:0.25rem;">Primary Affiliation</div>
+            <div style="font-size:0.95rem; color:var(--slate-700);">
+              Duke Kunshan University<br>
+              Environmental Economics Research Group
+            </div>
+          </div>
+
+          <div>
+            <div style="font-size:0.8rem; font-weight:700; text-transform:uppercase; color:var(--slate-400); margin-bottom:0.25rem;">Physical Location</div>
+            <div style="font-size:0.95rem; color:var(--slate-700);">
+              Shenzhen, China / Durham, NC, USA
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <a href="mailto:tl243@duke.edu" class="btn btn-primary">
+          <i data-lucide="send" style="width:16px; height:16px;"></i> Send an Email
+        </a>
+        <a href="assets/docs/CV_TeLai_Academic.pdf" target="_blank" class="btn btn-outline" style="margin-left:0.5rem;">
+          <i data-lucide="file-text" style="width:16px; height:16px;"></i> View Full CV
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3>Te Lai <span style="font-weight:400; font-size:1rem; opacity:0.8;">(赖特)</span></h3>
+          <p>
+            Applied microeconomist focusing on environmental & energy economics, innovation economics, cyber-physical systems, and frontier big data / LLM econometric methods.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Research Links</h4>
+          <ul class="footer-links">
+            <li><a href="#flagship">Automotive Trilogy</a></li>
+            <li><a href="#research">Carbon Pricing Paper</a></li>
+            <li><a href="#research">Network Evolution Paper</a></li>
+            <li><a href="#dashboards">Interactive Dashboards</a></li>
+            <li><a href="#methodology">Replication Datasets</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Academic Profile</h4>
+          <ul class="footer-links">
+            <li><a href="assets/docs/CV_TeLai_Academic.pdf" target="_blank">Curriculum Vitae (PDF)</a></li>
+            <li><a href="assets/docs/oem_platform_master_v1.xlsx" download>OEM Platform Master</a></li>
+            <li><a href="#about">About Me</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          &copy; 2026 Te Lai. All rights reserved. Built with academic rigor and modern web standards.
+        </div>
+        <div style="display:flex; gap:1rem;">
+          <a href="#about" style="color:#94a3b8;">Back to Top ↑</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal Lightbox for High-Res Figures -->
+  <div class="modal-overlay" id="figureModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modalTitle">Figure Viewer</h3>
+        <button class="modal-close" id="modalClose">&times;</button>
+      </div>
+      <div class="modal-body">
+        <img id="modalImage" src="" alt="Enlarged Figure">
+        <div class="modal-desc" id="modalDescription"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification for BibTeX Copy -->
+  <div class="toast" id="toast">
+    BibTeX citation copied to clipboard!
+  </div>
+
+  <!-- Initialize Lucide Icons & Custom Scripts -->
+  <script src="assets/js/main.js"></script>
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>
