@@ -34,11 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
       title: "Bipartite Knowledge Recombination Network",
       desc: "Empirical bipartite network mapping co-occurrences between electric-powertrain patents, internal-combustion patents and autonomous-driving algorithm patents. Internal-combustion vehicles show orthogonal separation, whereas native EV platforms show dense phase-transition recombination."
     },
-    fig2: {
-      src: IMG + "Fig2_semantic_distance_collapse.png",
-      title: "PatentSBERTa Semantic Distance",
-      desc: "768-dimensional semantic embedding distance between chassis electromechanical hardware and cognitive planning algorithms, 2008–2024."
-    },
+
     fig3: {
       src: IMG + "Fig3_placebo_trajectory.png",
       title: "Placebo Disentanglement and Cognitive Algorithm Trajectory",
