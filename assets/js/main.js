@@ -68,6 +68,16 @@ document.addEventListener("DOMContentLoaded", function () {
       src: IMG + "EV_Pipeline_Flowchart_EN.png",
       title: "End-to-End Patent Data Engineering Pipeline",
       desc: "Full-stack data pipeline integrating DuckDB, Lens, USPTO, EPO and Orbis records with LLM-assisted verification and high-dimensional semantic vectorisation."
+    },
+    fig1b: {
+      src: IMG + "Fig1b_cognitive_growth.png",
+      title: "Subsystem Patent Volume and Decision Share, 2008–2024",
+      desc: "Panel (a) plots annual applications in four automotive subsystems: cognitive decision and planning, vehicle control and actuation, environmental perception, and connected support systems. Panel (b) reports the decision share of patents together with growth indices relative to 2008, documenting the roughly eleven-fold expansion of cognitive decision patents relative to the other subsystems."
+    },
+    fig_crossborder: {
+      src: IMG + "Fig6_crossborder_flows.png",
+      title: "Cross-Border Technology Flows in Energy-Storage Patents",
+      desc: "Sankey diagram tracing 77,245 originating patent families to 438,040 subsequent filings across jurisdictions. Origin shares: Japan 32.4%, Germany 19.1%, United States 15.6%, rest of world 13.6%, Korea 13.5%, China 5.9%. Filing shares: United States 29.1%, rest of world 21.6%, China 18.8%, Europe 18.5%, Japan 6.9%, Korea 5.0%."
     }
   };
 

@@ -304,6 +304,20 @@ ul.interests strong { font-weight: 600; color: var(--ink); }
 }
 
 /* ---------- figures ---------- */
+.fig-group {
+  font-family: var(--sans);
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin: 26px 0 14px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.fig-group:first-of-type { margin-top: 4px; }
+
 .figures {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -351,6 +365,26 @@ figcaption {
   line-height: 1.5;
   margin-top: 7px;
   flex: 1 1 auto;
+}
+
+/* a figure that is alone in its group spans the full column width */
+.figures figure:only-child {
+  grid-column: 1 / -1;
+  max-width: 100%;
+}
+
+.figures figure:only-child .frame {
+  aspect-ratio: 21 / 9;
+}
+
+/* when a 2-column group has an odd number of items, the trailing figure
+   would sit alone in the left column — let it span the full width instead */
+.figures figure:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+}
+
+.figures figure:last-child:nth-child(odd) .frame {
+  aspect-ratio: 21 / 9;
 }
 
 /* ---------- CV blocks ---------- */
