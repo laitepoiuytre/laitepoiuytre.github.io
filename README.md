@@ -29,40 +29,36 @@ Then navigate to `http://localhost:8000` in any browser.
 ## 📂 Directory Structure
 
 ```
-academic_website/
+D:\academic_website/
 ├── index.html                  # Main responsive personal website
 ├── start_website.bat           # One-click Windows desktop launcher
 ├── start_server.py             # Python local HTTP server & browser auto-opener
 ├── verify_links.py             # Automated asset & hyperlink validator
-├── smoke_test.js               # HTTP smoke test (serves the site, asserts every asset returns 200)
 ├── README.md                   # Site documentation & deployment guide
 ├── assets/
 │   ├── css/
 │   │   └── style.css           # Ivy-League academic typography & styling
-│   ├── fonts.css               # Self-hosted @font-face declarations (no CDN)
-│   ├── fonts/                  # Inter / Newsreader / JetBrains Mono (woff2)
 │   ├── js/
-│   │   ├── main.js             # Modal lightbox, BibTeX copy, bilingual switcher
-│   │   ├── lucide.min.js       # Self-hosted icon library
-│   │   └── echarts.min.js      # Self-hosted charting library (Sankey dashboard)
+│   │   └── main.js             # Modal lightbox, BibTeX copy, bilingual switcher
 │   ├── images/
 │   │   ├── Te_Lai.jpg          # Professional academic portrait
+│   │   ├── Te_Lai_casual.jpg   # High-res casual portrait
 │   │   ├── Fig1_bipartite_network.png
-│   │   ├── Fig1_sankey_paradigm.png
 │   │   ├── Fig2_semantic_distance_collapse.png
 │   │   ├── Fig3_placebo_trajectory.png
-│   │   ├── Fig4_event_study.png
 │   │   ├── Fig4_oem_platform_transition.png
 │   │   ├── Fig5_tier1_boundary.png
 │   │   └── EV_Pipeline_Flowchart_EN.png
 │   └── docs/
 │       ├── CV_TeLai_Academic.pdf                                # Academic CV (English)
+│       ├── CV_TeLai_Chinese.pdf                                 # Academic CV (Chinese)
 │       ├── Technical_Architecture_and_Embodied_AI_Trilogy_Proposal.pdf # Master Working Paper Trilogy (EN)
 │       ├── Technical_Architecture_and_Embodied_AI_Trilogy_Proposal_CN.pdf # Master Working Paper Trilogy (CN)
 │       ├── presentation_academic_en.pdf                         # Academic Slides (English)
 │       ├── presentation_academic.pdf                            # Academic Slides (Chinese)
 │       ├── greennetwork_paper.pdf                               # Patent Network Paper (AAERE)
 │       ├── AAERE_Conference_Slides.pdf                          # AAERE Conference Slide Deck
+│       ├── Recommendation_Letter_Yang_Zheng.pdf                 # Letter of Recommendation (Dr. Yang Zheng)
 │       ├── oem_platform_master_v1.xlsx                          # 25 Automakers, 152 Platforms Replication Data
 │       └── oem_platform_master_v1.csv
 └── dashboards/
@@ -72,53 +68,19 @@ academic_website/
     └── charts/                                                  # 12-Theme charts (chart1 - chart12)
 ```
 
-> **Note on self-containment.** All fonts, the icon library (Lucide) and the charting
-> library (ECharts) are vendored under `assets/`. The site makes **zero third-party
-> network requests**, so it renders identically offline and behind restrictive networks.
-
----
-
-## ✅ Validating the Site
-
-Run both checks after any edit:
-
-```bash
-python verify_links.py --strict   # static: every referenced local file must exist
-node smoke_test.js                # dynamic: every asset must return HTTP 200
-```
-
-`verify_links.py` resolves relative paths against the **referring file's** directory,
-so it catches path bugs that only manifest at runtime (e.g. an asset referenced from
-`assets/js/` resolving under `assets/js/assets/`). `--strict` additionally fails on
-orphan assets.
-
 ---
 
 ## 🌐 How to Deploy Online (Free & Permanent)
 
-### Option A: GitHub Pages (Recommended)
-1. Create a repository on GitHub named `<username>.github.io`.
-2. Push the contents of this folder to the `main` branch.
+### Option A: GitHub Pages (Recommended, e.g. `telai.github.io`)
+1. Create a repository on GitHub named `<username>.github.io` (e.g. `telai.github.io`).
+2. Push the contents of this folder (`D:\academic_website`) to the `main` branch.
 3. In GitHub repo Settings -> **Pages**, ensure source is set to `Deploy from a branch` -> `main` / `/(root)`.
-4. Your website is immediately live at `https://<username>.github.io/`.
+4. Your website is immediately live worldwide with a free custom domain or `.github.io` URL!
 
 ### Option B: Cloudflare Pages / Vercel / Netlify
-1. Drag and drop this directory into the Cloudflare Pages or Vercel dashboard.
-2. It will deploy within seconds as an ultra-fast static site.
-
----
-
-## 🔒 Publication Notes
-
-This build is the **public** variant. Two items are intentionally excluded:
-
-| Item | Reason |
-|---|---|
-| `Recommendation_Letter_Yang_Zheng.pdf` | Confidential third-party material; only an attributed quotation appears on the site. |
-| `CV_TeLai_Chinese.pdf` | Superseded; the site is published in English only to avoid divergence between language versions. |
-
-The published `CV_TeLai_Academic.pdf` has had the personal phone number removed;
-`tl243@duke.edu` is the sole contact channel.
+1. Drag and drop the `D:\academic_website` directory into Cloudflare Pages or Vercel dashboard.
+2. It will deploy within 10 seconds as a ultra-fast static site.
 
 ---
 
@@ -144,4 +106,4 @@ The published `CV_TeLai_Academic.pdf` has had the personal phone number removed;
    - M.S. in Applied Economics, University of Michigan (GPA 4.0/4.0).
    - B.A. in Political Economy, Duke Kunshan University (GPA 3.8/4.0, Dean's List).
    - CFA Level 3 Candidate, FRM Level 1.
-   - Research assistantship with Prof. Jingbo Cui (Duke Kunshan University).
+   - Strong Letter of Recommendation from Dr. Yang Zheng (Aston / LSE).

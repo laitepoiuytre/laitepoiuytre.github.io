@@ -1,124 +1,166 @@
 /**
- * Te Lai - Academic Economics Website JavaScript
+ * Te Lai — academic homepage scripts
+ *
+ * 1. Figure lightbox
+ * 2. BibTeX copy-to-clipboard
+ * 3. Section highlighting in the sticky nav
+ *
+ * No external dependencies. Image paths are resolved from this script's own
+ * URL so the lightbox keeps working regardless of which page embeds it.
  */
 
 document.addEventListener("DOMContentLoaded", function () {
-  // 1. Modal Lightbox for Figures
-  const modal = document.getElementById("figureModal");
-  const modalImg = document.getElementById("modalImage");
-  const modalTitle = document.getElementById("modalTitle");
-  const modalDesc = document.getElementById("modalDescription");
-  const modalClose = document.getElementById("modalClose");
+  /* ---------------------------------------------------------------
+   * 1. Figure lightbox
+   * ------------------------------------------------------------- */
 
-  // Resolve figure paths from this script's own URL, not the page URL.
-  // main.js lives in assets/js/, so a bare relative path to a figure would
-  // resolve under assets/js/ and 404 inside the lightbox.
-  // Locate the <script> tag explicitly because document.currentScript is null
-  // inside a DOMContentLoaded handler.
-  const scriptEl = document.querySelector('script[src$="assets/js/main.js"]');
-  const IMG = scriptEl
+  var modal = document.getElementById("figureModal");
+  var modalImg = document.getElementById("modalImage");
+  var modalTitle = document.getElementById("modalTitle");
+  var modalDesc = document.getElementById("modalDescription");
+  var modalClose = document.getElementById("modalClose");
+
+  // main.js lives in assets/js/; figures live in assets/images/.
+  // Resolve against this script's URL rather than the document's, so the
+  // path is correct even if the page is served from a sub-directory.
+  var scriptEl = document.querySelector('script[src$="assets/js/main.js"]');
+  var IMG = scriptEl
     ? new URL("../images/", scriptEl.src).href
     : new URL("assets/images/", window.location.href).href;
 
-  const figureData = {
+  var figureData = {
     fig1: {
-      title: "Figure 1: Bipartite Knowledge Recombination Network (Electric vs. ICE Powertrain)",
       src: IMG + "Fig1_bipartite_network.png",
-      desc: "Empirical bipartite network mapping co-occurrences between 3.2M electric powertrain patents, 5.8M internal combustion patents, and 510K autonomous driving algorithms. Demonstrates the orthogonal separation in ICE vehicles versus the high-density phase-transition recombination in native EV platforms."
+      title: "Bipartite Knowledge Recombination Network",
+      desc: "Empirical bipartite network mapping co-occurrences between electric-powertrain patents, internal-combustion patents and autonomous-driving algorithm patents. Internal-combustion vehicles show orthogonal separation, whereas native EV platforms show dense phase-transition recombination."
     },
     fig2: {
-      title: "Figure 2: PatentSBERTa High-Dimensional Semantic Distance Collapse (2008–2024)",
       src: IMG + "Fig2_semantic_distance_collapse.png",
-      desc: "Tracks the 768-dimensional semantic embedding distance between chassis electromechanical hardware and cognitive planning algorithms over time. Documents a statistically sharp 15.6% distributional collapse following architectural modularization."
+      title: "PatentSBERTa Semantic Distance",
+      desc: "768-dimensional semantic embedding distance between chassis electromechanical hardware and cognitive planning algorithms, 2008–2024."
     },
     fig3: {
-      title: "Figure 3: Placebo Disentanglement & Cognitive Algorithm Trajectory",
       src: IMG + "Fig3_placebo_trajectory.png",
-      desc: "Compares high-coordination planning & control domains (+11.1x growth) against low-coordination perception modules (vision +5.9x, in-cabin infotainment +4.4x), isolating the architectural feedback mechanism from secular digital technology trends."
+      title: "Placebo Disentanglement and Cognitive Algorithm Trajectory",
+      desc: "Compares high-coordination planning and control domains with low-coordination perception and infotainment modules, separating the architectural feedback mechanism from secular digital technology trends."
     },
     fig4: {
-      title: "Figure 4: Global Automaker Native Platform Transitions & Counterfactual Window",
       src: IMG + "Fig4_oem_platform_transition.png",
-      desc: "Chronological transition timeline across 25 global automotive groups and 152 platform generations. Identifies the 2–10 year 'Conversion EV' modular retrofitting window as a within-firm natural experiment counterfactual."
+      title: "Native Platform Transitions and the Counterfactual Window",
+      desc: "Chronological transition timeline across 25 global automotive groups and 152 platform generations. Identifies the 2–10 year conversion-EV retrofitting window as a within-firm natural experiment."
     },
     fig5: {
-      title: "Figure 5: Vertical Boundary Reorganization & Tier-1 Supplier Commoditization",
       src: IMG + "Fig5_tier1_boundary.png",
-      desc: "Dyad citation and knowledge flow analysis between OEMs and top-10 chassis mega-suppliers (Bosch, Continental, ZF). Reveals OEM upward intrusion into vehicle motion control (VMC) and horizontal supplier semantic homogenization."
-    },
-    fig_pipeline: {
-      title: "Figure 6: Global EV & Autonomous Driving Data Engineering Pipeline",
-      src: IMG + "EV_Pipeline_Flowchart_EN.png",
-      desc: "Full-stack data pipeline integrating DuckDB, Lens, USPTO, EPO, and Orbis records with LLM-assisted verification and high-dimensional semantic vectorization."
+      title: "Vertical Boundary Reorganisation and Tier-1 Commoditisation",
+      desc: "Dyad citation and knowledge-flow analysis between OEMs and the top-10 chassis suppliers, showing OEM intrusion into vehicle motion control and horizontal supplier semantic homogenisation."
     },
     fig_event: {
-      title: "Figure 6: Event Study — True Event vs. Placebo Dynamics",
       src: IMG + "Fig4_event_study.png",
-      desc: "Dynamic treatment-effect estimates (β_k) for architectural centralization on the true native-platform event (panel a) versus the modular retrofit 'Conversion EV' placebo event (panel b). The true-event coefficients rise monotonically from ~0.04 at k=0 to ~0.19 at k=5 with a wide but consistently positive 95% CI, while the placebo trajectory stays flat around zero — supporting the parallel-trends assumption underlying the staggered DID design."
+      title: "Event Study — True Event versus Placebo",
+      desc: "Dynamic treatment-effect estimates for architectural centralisation on the true native-platform event (left) versus the modular-retrofit placebo event (right). True-event coefficients rise from about 0.04 at k=0 to about 0.19 at k=5; the placebo trajectory stays flat around zero, supporting the parallel-trends assumption behind the staggered DID design."
     },
     fig_paradigm: {
-      title: "Figure 7: Technology Portfolio Composition (2008–2024)",
       src: IMG + "Fig1_sankey_paradigm.png",
-      desc: "Share of patent families by technology family over the 2008–2024 application window: native EV platforms and chassis-by-wire, modular ADAS and standalone algorithms, and legacy ICE powertrains with mechanical control. Documents the macro-level paradigm coexistence and the reallocation of innovative effort across the three families."
+      title: "Technology Portfolio Composition, 2008–2024",
+      desc: "Share of patent families by technology family across the application window: native EV platforms and chassis-by-wire, modular ADAS and standalone algorithms, and legacy ICE powertrains with mechanical control."
+    },
+    fig_pipeline: {
+      src: IMG + "EV_Pipeline_Flowchart_EN.png",
+      title: "End-to-End Patent Data Engineering Pipeline",
+      desc: "Full-stack data pipeline integrating DuckDB, Lens, USPTO, EPO and Orbis records with LLM-assisted verification and high-dimensional semantic vectorisation."
     }
   };
 
-  document.querySelectorAll("[data-figure]").forEach(function (el) {
-    el.addEventListener("click", function () {
-      const figKey = this.getAttribute("data-figure");
-      const data = figureData[figKey];
-      if (data) {
-        modalImg.src = data.src;
-        modalTitle.textContent = data.title;
-        modalDesc.textContent = data.desc;
-        modal.classList.add("active");
-        document.body.style.overflow = "hidden";
+  function openModal(key) {
+    var data = figureData[key];
+    if (!data || !modal) return;
+    modalImg.src = data.src;
+    modalImg.alt = data.title;
+    modalTitle.textContent = data.title;
+    modalDesc.textContent = data.desc;
+    modal.classList.add("active");
+    document.body.style.overflow = "hidden";
+    if (modalClose) modalClose.focus();
+  }
+
+  function closeModal() {
+    if (!modal) return;
+    modal.classList.remove("active");
+    document.body.style.overflow = "";
+    modalImg.src = "";
+  }
+
+  // The clickable element is the .frame wrapper; the key lives on the <img>.
+  document.querySelectorAll("figure .frame").forEach(function (frame) {
+    var img = frame.querySelector("img[data-figure]");
+    if (!img) return;
+    var key = img.getAttribute("data-figure");
+
+    frame.addEventListener("click", function () {
+      openModal(key);
+    });
+
+    frame.setAttribute("tabindex", "0");
+    frame.setAttribute("role", "button");
+    frame.setAttribute("aria-label", "Enlarge figure");
+    frame.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        openModal(key);
       }
     });
   });
 
-  if (modalClose) {
-    modalClose.addEventListener("click", function () {
-      modal.classList.remove("active");
-      document.body.style.overflow = "auto";
-    });
-  }
+  if (modalClose) modalClose.addEventListener("click", closeModal);
 
   if (modal) {
     modal.addEventListener("click", function (e) {
-      if (e.target === modal) {
-        modal.classList.remove("active");
-        document.body.style.overflow = "auto";
-      }
+      if (e.target === modal) closeModal();
     });
   }
 
-  // 2. BibTeX Copy
-  const bibtexDict = {
-    bib_trilogy: `@article{lai2026architecture,
-  title={Technical Architecture, Knowledge Recombination, and the Vertical Boundary of the Firm: Empirical Evidence from Cyber-Physical Innovation in the Automotive Industry},
-  author={Lai, Te},
-  journal={Working Paper Series on Innovation and Technical Change},
-  year={2026},
-  institution={Duke Kunshan University}
-}`,
-    bib_carbon: `@article{cui2026carbon,
-  title={Global Carbon Pricing and Clean Energy Innovation},
-  author={Cui, Jingbo and Lai, Te and Zheng, Yang},
-  journal={Working Paper},
-  year={2026},
-  institution={Duke Kunshan University and Aston University}
-}`,
-    bib_network: `@inproceedings{cui2021evolution,
-  title={The Evolution of The Network: The Evidence from China},
-  author={Cui, Jingbo and Lai, Te},
-  booktitle={Proceedings of the 6th East Asian Association of Environmental and Resource Economics (AAERE) Conference},
-  year={2021},
-  address={Seoul National University, South Korea}
-}`
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") closeModal();
+  });
+
+  /* ---------------------------------------------------------------
+   * 2. BibTeX copy
+   * ------------------------------------------------------------- */
+
+  var bibtexDict = {
+    bib_trilogy: [
+      "@techreport{lai2026architecture,",
+      "  title   = {Technical Architecture, Knowledge Recombination, and the Vertical Boundary of the Firm: Empirical Evidence from Cyber-Physical Innovation in the Automotive Industry},",
+      "  author  = {Lai, Te},",
+      "  year    = {2026},",
+      "  month   = {October},",
+      "  type    = {Working Paper},",
+      "  note    = {Job market paper},",
+      "  address = {Kunshan, China},",
+      "  institution = {Duke Kunshan University}",
+      "}"
+    ].join("\n"),
+    bib_carbon: [
+      "@techreport{cui2026carbon,",
+      "  title  = {Global Carbon Pricing and Clean Energy Innovation},",
+      "  author = {Cui, Jingbo and Lai, Te and Zheng, Yang},",
+      "  year   = {2026},",
+      "  type   = {Working Paper},",
+      "  institution = {Duke Kunshan University and Aston University}",
+      "}"
+    ].join("\n"),
+    bib_network: [
+      "@inproceedings{cui2021network,",
+      "  title  = {The Evolution of the Network: The Evidence from China},",
+      "  author = {Cui, Jingbo and Lai, Te},",
+      "  year   = {2021},",
+      "  booktitle = {Proceedings of the 6th East Asian Association of Environmental and Resource Economics (AAERE) Conference},",
+      "  address = {Seoul National University, South Korea}",
+      "}"
+    ].join("\n")
   };
 
-  const toast = document.getElementById("toast");
+  var toast = document.getElementById("toast");
 
   function showToast(msg) {
     if (!toast) return;
@@ -126,74 +168,59 @@ document.addEventListener("DOMContentLoaded", function () {
     toast.classList.add("show");
     setTimeout(function () {
       toast.classList.remove("show");
-    }, 3000);
+    }, 2200);
   }
 
   document.querySelectorAll("[data-bibtex]").forEach(function (btn) {
-    btn.addEventListener("click", function () {
-      const bibKey = this.getAttribute("data-bibtex");
-      const citation = bibtexDict[bibKey];
-      if (citation) {
-        navigator.clipboard.writeText(citation).then(function () {
-          showToast("BibTeX citation copied to clipboard!");
-        }).catch(function () {
-          showToast("Copied citation!");
-        });
-      }
-    });
-  });
+    btn.addEventListener("click", function (e) {
+      e.preventDefault();
+      var citation = bibtexDict[this.getAttribute("data-bibtex")];
+      if (!citation) return;
 
-  // 3. Language Switcher (EN / CN)
-  const langEnBtn = document.getElementById("langEn");
-  const langCnBtn = document.getElementById("langCn");
-
-  function setLanguage(lang) {
-    if (lang === "cn") {
-      document.body.classList.add("lang-cn");
-      document.querySelectorAll("[data-en]").forEach(function (el) {
-        el.setAttribute("data-original-en", el.innerHTML);
-        if (el.getAttribute("data-cn")) {
-          el.innerHTML = el.getAttribute("data-cn");
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(citation).then(
+          function () { showToast("BibTeX copied to clipboard"); },
+          function () { showToast("Copy failed — select the citation manually"); }
+        );
+      } else {
+        var ta = document.createElement("textarea");
+        ta.value = citation;
+        ta.style.position = "fixed";
+        ta.style.opacity = "0";
+        document.body.appendChild(ta);
+        ta.select();
+        try {
+          document.execCommand("copy");
+          showToast("BibTeX copied to clipboard");
+        } catch (err) {
+          showToast("Copy failed");
         }
-      });
-      if (langCnBtn) langCnBtn.classList.add("active");
-      if (langEnBtn) langEnBtn.classList.remove("active");
-      localStorage.setItem("preferred_lang", "cn");
-    } else {
-      document.body.classList.remove("lang-cn");
-      document.querySelectorAll("[data-original-en]").forEach(function (el) {
-        el.innerHTML = el.getAttribute("data-original-en");
-      });
-      if (langEnBtn) langEnBtn.classList.add("active");
-      if (langCnBtn) langCnBtn.classList.remove("active");
-      localStorage.setItem("preferred_lang", "en");
-    }
-  }
-
-  if (langEnBtn && langCnBtn) {
-    langEnBtn.addEventListener("click", function () { setLanguage("en"); });
-    langCnBtn.addEventListener("click", function () { setLanguage("cn"); });
-  }
-
-  // 4. Smooth Nav Link Highlighting
-  const sections = document.querySelectorAll("section[id]");
-  const navLinks = document.querySelectorAll(".nav-link");
-
-  window.addEventListener("scroll", function () {
-    let current = "";
-    sections.forEach(function (section) {
-      const sectionTop = section.offsetTop - 120;
-      if (pageYOffset >= sectionTop) {
-        current = section.getAttribute("id");
-      }
-    });
-
-    navLinks.forEach(function (link) {
-      link.classList.remove("active");
-      if (link.getAttribute("href") === "#" + current) {
-        link.classList.add("active");
+        document.body.removeChild(ta);
       }
     });
   });
-});
 
+  /* ---------------------------------------------------------------
+   * 3. Nav highlighting
+   * ------------------------------------------------------------- */
+
+  var sections = document.querySelectorAll("section[id]");
+  var navLinks = document.querySelectorAll("nav.site-nav a[href^='#']");
+
+  if (sections.length && navLinks.length) {
+    var onScroll = function () {
+      var pos = window.scrollY + 140;
+      var current = "";
+      sections.forEach(function (s) {
+        if (s.offsetTop <= pos) current = s.id;
+      });
+      navLinks.forEach(function (link) {
+        var isActive = link.getAttribute("href") === "#" + current;
+        link.classList.toggle("active", isActive);
+      });
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+  }
+});

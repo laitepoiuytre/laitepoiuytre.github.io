@@ -28,7 +28,11 @@ SCAN_EXTS = {'.html', '.htm', '.js', '.css'}
 ASSET_EXTS = {'.png', '.jpg', '.jpeg', '.webp', '.gif', '.svg',
               '.pdf', '.css', '.js', '.xlsx', '.csv', '.woff2', '.woff', '.ttf'}
 # 跳过目录
-SKIP_DIRS = {'.git', 'node_modules', '__pycache__', '.chrome-tmp', '_unused'}
+SKIP_DIRS = {'.git', 'node_modules', '__pycache__', '.chrome-tmp',
+             '_unused', '_publish', '_backup_v1_portfolio'}
+# 不对外发布、不进引用链的仓库内文件（工具脚本、保密材料）
+IGNORE_FILES = {'smoke_test.js', 'verify_links.py', 'start_server.py',
+                'Recommendation_Letter_Yang_Zheng.pdf'}
 
 # 硬编码路径 / 外部协议，不参与本地校验
 EXTERNAL_PREFIXES = ('http://', 'https://', '//', 'mailto:', 'tel:', 'data:', '#', 'javascript:')
@@ -139,9 +143,12 @@ def main():
                 bare.append((rel_src, raw_s.replace('__BARE__', '')))
                 continue
             if raw_s.startswith(EXTERNAL_PREFIXES):
-                # 只把真正的外部网络依赖报出来，锚点/协议除外
+                # 只有以资源扩展名结尾的外部 URL 才算「资源依赖」；
+                # 指向他人主页/论文 DOI 的普通超链接不算。
                 if raw_s.startswith(('http://', 'https://', '//')):
-                    external.append((rel_src, raw_s))
+                    clean = raw_s.split('?')[0].split('#')[0].lower()
+                    if clean.endswith(tuple(ASSET_EXTS)):
+                        external.append((rel_src, raw_s))
                 continue
             target = resolve(raw_s, src_file)
             if target is None:
@@ -184,6 +191,8 @@ def main():
         if any(part in SKIP_DIRS for part in path.parts):
             continue
         if path.suffix.lower() not in ASSET_EXTS:
+            continue
+        if path.name in IGNORE_FILES:
             continue
         if path.resolve() not in referenced_files:
             orphans.append(path.relative_to(SITE_ROOT))
