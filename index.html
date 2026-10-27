@@ -94,12 +94,16 @@
 
     <div class="paper">
       <p class="paper-title">
-        <span class="flag">Job Market Paper</span>
+        <span class="flag">Job Market Paper · Research Proposal</span>
         Technical Architecture, Knowledge Recombination, and the Vertical Boundary
         of the Firm: Evidence from Cyber-Physical Innovation in the Automotive Industry
       </p>
       <p class="paper-authors"><span class="self">Te Lai</span></p>
-      <p class="paper-venue">Working paper, October 2026. <em>JEL</em>: O31, O32, L22, L23, L62.</p>
+      <p class="paper-venue">
+        Research proposal, October 2026. Descriptive evidence is complete; the causal
+        tests described below are specified but not yet estimated.
+        <em>JEL</em>: O31, O32, L22, L23, L62.
+      </p>
       <p class="paper-abstract">
         How do shifts in underlying technical architecture govern the micro-foundations
         of knowledge recombination and the vertical boundaries of the firm? Innovation
@@ -109,10 +113,19 @@
         decoupling. In cyber-physical systems, however, cognitive algorithms must
         execute through electromechanical actuators governed by microsecond-level
         deterministic feedback loops, so the physical interface architecture becomes
-        the binding conduit for recombinant search. I investigate this across three
-        linked studies spanning 3.2M electric-powertrain patents, 5.8M internal-combustion
-        patents, 510K verified autonomous-driving patents, 152 platform generations
-        across 25 automakers, and 111K Tier-1 supplier patents.
+        the binding conduit for recombinant search.
+      </p>
+      <p class="paper-abstract">
+        This research programme proposes three linked studies spanning 3.2M
+        electric-powertrain patents, 5.8M internal-combustion patents, 510K verified
+        autonomous-driving patents, 152 platform generations across 25 automakers,
+        and 111K Tier-1 supplier patents. Study&nbsp;1 documents descriptive
+        stylised facts on recombination between powertrain hardware and cognitive
+        algorithms. Study&nbsp;2 is designed as a within-firm staggered
+        difference-in-differences design that exploits the 2- to 10-year window during
+        which incumbent automakers pursued modular retrofitting ahead of native
+        platform redesign. Study&nbsp;3 proposes to examine inter-firm vertical
+        boundaries using supplier–OEM dyad citations.
       </p>
       <p class="paper-links">
         [<a href="assets/docs/Technical_Architecture_and_Embodied_AI_Trilogy_Proposal.pdf" target="_blank" rel="noopener">Proposal</a>]
@@ -129,14 +142,15 @@
       <p class="paper-authors">Jingbo Cui, <span class="self">Te Lai</span>, and Yang Zheng</p>
       <p class="paper-venue">Working paper, 2026.</p>
       <p class="paper-abstract">
-        A comprehensive evaluation of the causal effects of carbon taxes and emissions
-        trading schemes on clean-energy innovation. We map over five million granted
-        patents (1990–2022) to more than 600 technologies in the IEA Clean Energy
-        Technology Guide using a multi-model consensus pipeline built on large language
-        models, reaching 80% classification accuracy against expert spot-checks versus
-        a 25% standard IPC/CPC baseline. We then use staggered difference-in-differences
-        and Poisson pseudo-maximum-likelihood regressions to isolate policy-induced
-        innovation responses, addressing cohort heterogeneity throughout.
+        This project evaluates the effects of carbon taxes and emissions trading
+        schemes on clean-energy innovation. We map over five million granted patents
+        (1990–2022) to more than 600 technologies in the IEA Clean Energy Technology
+        Guide using a multi-model consensus pipeline built on large language models,
+        reaching 80% classification accuracy against expert spot-checks versus a 25%
+        standard IPC/CPC baseline. The empirical strategy uses staggered
+        difference-in-differences and Poisson pseudo-maximum-likelihood regressions to
+        isolate policy-induced innovation responses while addressing cohort
+        heterogeneity.
       </p>
       <p class="paper-links">[<a href="#" data-bibtex="bib_carbon">BibTeX</a>]</p>
     </div>
@@ -190,71 +204,65 @@
     <h2>Selected Figures</h2>
     <p class="section-note">Click any figure to enlarge.</p>
 
-    <h3 class="fig-group">Job Market Paper — Technical Architecture Trilogy</h3>
+    <h3 class="fig-group">Research Proposal — Technical Architecture Trilogy</h3>
     <div class="figures">
-
-      <figure>
-        <div class="frame"><img src="assets/images/Fig4_event_study.png" alt="Event study: true event versus placebo dynamics" data-figure="fig_event"></div>
-        <figcaption>
-          Event study — true native-platform event (left) versus modular-retrofit
-          placebo (right). Treatment effects rise monotonically to ≈0.19 at k=5 while
-          the placebo trajectory stays at zero.
-        </figcaption>
-      </figure>
 
       <figure>
         <div class="frame"><img src="assets/images/Fig1b_cognitive_growth.png" alt="Subsystem patent volume and decision share" data-figure="fig1b"></div>
         <figcaption>
-          Subsystem patent volume 2008–2024 (left) and decision share with growth
-          indices relative to 2008 (right). Cognitive decision and planning patents
-          grow roughly eleven-fold.
+          Descriptive evidence. Subsystem patent volume 2008–2024 (left) and
+          decision share with growth indices relative to 2008 (right). Cognitive
+          decision and planning patents grow roughly eleven-fold over the period.
         </figcaption>
       </figure>
 
       <figure>
         <div class="frame"><img src="assets/images/Fig1_bipartite_network.png" alt="Bipartite knowledge recombination network" data-figure="fig1"></div>
         <figcaption>
-          Bipartite knowledge-recombination network contrasting internal-combustion
-          and native-EV powertrains.
+          Descriptive evidence. Bipartite knowledge-recombination network
+          contrasting internal-combustion and native-EV powertrains.
         </figcaption>
       </figure>
 
       <figure>
         <div class="frame"><img src="assets/images/Fig2_semantic_distance_collapse.png" alt="PatentSBERTa semantic distance collapse" data-figure="fig2"></div>
         <figcaption>
-          768-dimensional PatentSBERTa semantic distance between chassis hardware and
-          planning algorithms, 2008–2024.
+          Descriptive evidence. 768-dimensional PatentSBERTa semantic distance
+          between chassis hardware and planning algorithms, 2008–2024.
         </figcaption>
       </figure>
 
       <figure>
         <div class="frame"><img src="assets/images/Fig3_placebo_trajectory.png" alt="Placebo disentanglement" data-figure="fig3"></div>
         <figcaption>
-          Placebo disentanglement — high-coordination planning and control versus
-          low-coordination perception and infotainment modules.
+          Descriptive evidence. High-coordination planning and control versus
+          low-coordination perception and infotainment modules, used in the proposal
+          to separate architectural effects from secular digital trends.
         </figcaption>
       </figure>
 
       <figure>
         <div class="frame"><img src="assets/images/Fig4_oem_platform_transition.png" alt="Global automaker platform transitions" data-figure="fig4"></div>
         <figcaption>
-          Native-platform transition timeline across 25 automaker groups and 152
-          platform generations, showing the 2–10 year retrofit window.
+          Descriptive evidence. Native-platform transition timeline across 25
+          automaker groups and 152 platform generations, identifying the 2–10 year
+          retrofit window used as the proposed within-firm comparison.
         </figcaption>
       </figure>
 
       <figure>
         <div class="frame"><img src="assets/images/Fig5_tier1_boundary.png" alt="Vertical boundary reorganisation" data-figure="fig5"></div>
         <figcaption>
-          Vertical-boundary reorganisation: OEM intrusion into vehicle motion control
-          and Tier-1 supplier commoditisation.
+          Descriptive evidence. Supplier–OEM dyad structure in vehicle motion
+          control, used in the proposal to examine vertical-boundary reorganisation.
         </figcaption>
       </figure>
 
       <figure>
         <div class="frame"><img src="assets/images/Fig1_sankey_paradigm.png" alt="Technology portfolio composition" data-figure="fig_paradigm"></div>
         <figcaption>
-          Portfolio composition of patent families by technology family, 2008–2024.
+          Data construction. Portfolio composition of patent families by technology
+          family, 2008–2024.
         </figcaption>
       </figure>
 

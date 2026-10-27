@@ -54,11 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
       title: "Vertical Boundary Reorganisation and Tier-1 Commoditisation",
       desc: "Dyad citation and knowledge-flow analysis between OEMs and the top-10 chassis suppliers, showing OEM intrusion into vehicle motion control and horizontal supplier semantic homogenisation."
     },
-    fig_event: {
-      src: IMG + "Fig4_event_study.png",
-      title: "Event Study — True Event versus Placebo",
-      desc: "Dynamic treatment-effect estimates for architectural centralisation on the true native-platform event (left) versus the modular-retrofit placebo event (right). True-event coefficients rise from about 0.04 at k=0 to about 0.19 at k=5; the placebo trajectory stays flat around zero, supporting the parallel-trends assumption behind the staggered DID design."
-    },
+
     fig_paradigm: {
       src: IMG + "Fig1_sankey_paradigm.png",
       title: "Technology Portfolio Composition, 2008–2024",
